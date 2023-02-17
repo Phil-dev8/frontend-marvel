@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;0,700;1,400&display=swap");
+
 /*------------------------------------
 -------------HEADER------------------*/
 
@@ -66,8 +68,23 @@ input {
   font-size: 18px;
 }
 .search {
+  margin: 0 auto;
+  width: 75vw;
   display: flex;
   justify-content: center;
+  border: yellow solid;
+}
+button {
+  width: 100px;
+  height: 32px;
+  border: rgb(148, 0, 0) solid 3px;
+}
+.button {
+  width: 75vw;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  border: orange solid;
 }
 /*--------------------------------------
 --------------CARDS-----------------*/
@@ -96,8 +113,11 @@ input {
   font-size: 16px;
   text-align: center;
   margin-bottom: 20px;
+  z-index: 999;
+  margin-bottom: 200px;
 }
 .picture {
+  margin-top: 45px;
   width: 160px;
   height: 160px;
   border-radius: 20px;
@@ -106,7 +126,6 @@ input {
 
 .test {
   position: absolute;
-  text-decoration: none;
 }
 .test span {
   display: none;
@@ -136,4 +155,62 @@ input {
   border: 5px solid black;
   /* overflow: hidden; */
   padding: 12px;
+}
+.hide {
+  display: none;
+}
+button {
+  width: 100px;
+  height: 32px;
+  border: rgb(148, 0, 0) solid 3px;
+}
+
+/*-------------------------------------
+----------------CHARACTER--------------*/
+.character {
+  display: flex;
+  margin: 0 auto;
+  width: 75vw;
+  justify-content: center;
+  border: solid green;
+}
+.character-pic {
+  border: rgb(148, 0, 0) solid 3px;
+  border-radius: 10px;
+}
+.character-infos {
+  color: white;
+}
+.character-name {
+  font-size: 30px;
+  margin-left: 100px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.character-description {
+  margin-left: 100px;
+}
+.sentence {
+  margin-top: 50px;
+  text-align: center;
+  color: white;
+  font-size: 50px;
+}
+.characterincomics {
+  margin: 0 auto;
+  margin-top: 75px;
+  display: flex;
+  width: 75vw;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  gap: 15px;
+}
+.characterincomics img {
+  border: rgb(148, 0, 0) solid 3px;
+  border-radius: 10px;
+}
+.favorites {
+  margin-top: 100px;
+  margin-left: 100px;
 }

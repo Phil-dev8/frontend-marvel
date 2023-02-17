@@ -6,22 +6,23 @@ const Comics = () => {
   const [data, setData] = useState();
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
+  const [skip, setSkip] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://site--backend-marvel--nm6dw4wybf2m.code.run/comics?title=${search}`
+          `https://site--backend-marvel--nm6dw4wybf2m.code.run/comics?title=${search}&skip=${skip}`
         );
         setData(response.data);
-        console.log(response.data);
+        console.log(data);
         setLoading(false);
       } catch (error) {
         console.log(error.response);
       }
     };
     fetchData();
-  }, [search]);
+  }, [search, skip, data]);
 
   return loading ? (
     <p>Chargement</p>
@@ -30,23 +31,40 @@ const Comics = () => {
       <div className="search">
         <input
           type="text"
-          placeholder="Rechercher un comics"
+          placeholder="Rechercher parmis les 14000 comics"
           value={search}
           onChange={(event) => {
             setSearch(event.target.value);
           }}
         ></input>
       </div>
+      <div className="button">
+        <button
+          className={skip === 0 ? "hide" : null}
+          onClick={() => {
+            setSkip(skip - 80);
+          }}
+        >
+          PRÉCÉDENT
+        </button>
+        <button
+          onClick={() => {
+            setSkip(skip + 80);
+          }}
+        >
+          SUIVANT
+        </button>
+      </div>
       <div className="container">
         {data.results.map((elem, index) => {
-          if (
-            elem.thumbnail.path ===
-            "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available"
-          )
-            return null;
-          else {
-            return <ComicsCard key={index} elem={elem} />;
-          }
+          // if (
+          //   elem.thumbnail.path ===
+          //   "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available"
+          // )
+          //   return null;
+          // else {
+          return <ComicsCard key={index} elem={elem} />;
+          // }
         })}
       </div>
     </>

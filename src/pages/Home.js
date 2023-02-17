@@ -7,23 +7,24 @@ const Home = () => {
   const [data, setData] = useState();
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
+  const [skip, setSkip] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://site--backend-marvel--nm6dw4wybf2m.code.run/characters?name=${search}`
+          `https://site--backend-marvel--nm6dw4wybf2m.code.run/characters?name=${search}&skip=${skip}`
         );
 
         setData(response.data);
-        console.log(response.data);
+        //console.log(response.data);
         setLoading(false);
       } catch (error) {
         console.log(error.response);
       }
     };
     fetchData();
-  }, [search]);
+  }, [search, skip]);
 
   return loading ? (
     <p>Chargement</p>
@@ -32,12 +33,30 @@ const Home = () => {
       <div className="search">
         <input
           type="text"
-          placeholder="Rechercher un personnage"
+          placeholder="Rechercher parmis les 1493 personnages"
           value={search}
           onChange={(event) => {
             setSearch(event.target.value);
           }}
         ></input>
+      </div>
+      <div className="button">
+        <button
+          className={skip === 0 ? "hide" : null}
+          onClick={() => {
+            setSkip(skip - 100);
+          }}
+        >
+          PRÉCÉDENT
+        </button>
+        <button
+          className="next"
+          onClick={() => {
+            setSkip(skip + 100);
+          }}
+        >
+          SUIVANT
+        </button>
       </div>
 
       <div className="container">
@@ -49,7 +68,16 @@ const Home = () => {
           // ) {
           //   return null;
           // } else {
-          return <CharacterCard key={index} elem={elem} />;
+          // setCharacter(elem._id);
+          //console.log(elem._id);
+          return (
+            <div key={elem._id}>
+              <Link to={`/comics/${elem._id}`} id={elem._id}>
+                <CharacterCard elem={elem} />
+              </Link>
+            </div>
+          );
+
           // }
         })}
       </div>
