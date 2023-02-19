@@ -78,6 +78,7 @@ const Comics = () => {
                   Cookies.set("favorite-comic", [newTab], {
                     expires: 3,
                   });
+                  alert("Comic ajouté aux favoris");
                   // console.log(cookie);
                 }}
               >

@@ -1,3 +1,6 @@
+// CETTE PAGE NE S'AFFICHE QUE SI VOUS AVEZ AJOUTEZ AU MOINS UN COMIC ET AU MOINS UN PERSONNAGE EN FAVORIS SINON ERREUR DU A SPLIT SUR UNDEFINED...
+//J'AI ESSAYE DE METTRE UN IF MAIS DU COUP j'avais erreur "characterTab is not defined" ligne 57
+
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import axios from "axios";
@@ -6,7 +9,14 @@ const Favorites = () => {
   const favoritesCharacters = Cookies.get("favorite-character");
   const favoritesComics = Cookies.get("favorite-comic");
 
+  //EST CENSÉ RÉSOUDRE MON PROBLEME VARIABLE ENFERMÉ DANS LA CONDITION DU COUP LA LIGNE 57 NE PEUT ETRE LU..
+  // if (favoritesCharacters) {
+  //   const charactersTab = favoritesCharacters.split(",");
+  // } else {
+  //   const charactersTab = [];
+  // }
   const charactersTab = favoritesCharacters.split(",");
+
   const comicsTab = favoritesComics.split(",");
 
   const [dataCharacters, setDataCharacters] = useState();
@@ -42,6 +52,7 @@ const Favorites = () => {
   ) : (
     <>
       <h3>Personnages favoris</h3>
+
       <div className="container2">
         {charactersTab.map((fav, index) => {
           return (
@@ -67,6 +78,7 @@ const Favorites = () => {
       </div>
 
       <h3> Comics favoris</h3>
+
       <div className="container2">
         {comicsTab.map((fav, index) => {
           return (

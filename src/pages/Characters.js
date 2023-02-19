@@ -36,7 +36,7 @@ const Characters = () => {
       <div className="search">
         <input
           type="text"
-          placeholder="Rechercher parmis les 1493 personnages"
+          placeholder="Rechercher parmis les 1500 personnages"
           value={search}
           onChange={(event) => {
             setSearch(event.target.value);
@@ -84,13 +84,8 @@ const Characters = () => {
                   const newTab = [...favoriteCharacter];
                   newTab.push(elem._id);
                   setFavoriteCharacter(newTab);
-                  // console.log(newTab);
-
-                  Cookies.set("favorite-character", newTab, {
-                    expires: 3,
-                  });
-                  console.log(Cookies.get("favorite-character"));
-                  // console.log(cookie);
+                  Cookies.set("favorite-character", newTab, { expires: 3 });
+                  alert("Personnage ajouté aux favoris");
                 }}
               >
                 Favoris
