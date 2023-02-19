@@ -20,30 +20,55 @@ menu {
   margin: 0 auto;
   display: flex;
   gap: 200px;
-  background-color: grey;
-  justify-content: center;
+  /* background-color: grey; */
+  justify-content: space-around;
   align-items: center;
-  height: 80px;
+  height: 50px;
   border-radius: 10px;
   margin-bottom: 15px;
-  border: rgb(148, 0, 0) solid;
+  /* border: rgb(148, 0, 0) solid; */
+}
+.link {
+  text-decoration: none;
+  color: white;
 }
 
 ::placeholder {
-  color: black;
+  color: white;
   text-align: center;
+  font-family: "Roboto Condensed", sans-serif;
 }
 h2 {
   font-size: 30px;
-  border: solid rgb(148, 0, 0) 5px;
+  border: solid rgb(148, 0, 0) 1.8px;
   border-radius: 7px;
   width: 250px;
   text-align: center;
+  text-decoration: none;
+}
+h2:hover {
+  color: rgb(148, 0, 0);
 }
 /*--------------------------------------
 --------------MAIN-----------------*/
 body {
   background-color: black;
+  font-family: "Roboto Condensed", sans-serif;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.main img {
+  width: 75vw;
+  height: 65vh;
+  /* border: solid red; */
+  object-fit: cover;
+}
+.welcome {
+  color: white;
+  font-size: 25px;
 }
 .container {
   width: 75vw;
@@ -55,6 +80,7 @@ body {
   justify-content: center;
   background-color: rgb(70, 70, 70);
   border: rgb(148, 0, 0) solid;
+  margin-bottom: 300px;
 }
 
 input {
@@ -63,8 +89,9 @@ input {
   border-radius: 10px;
   height: 32px;
   width: 400px;
-  background-color: grey;
-  border: solid 3px rgb(148, 0, 0);
+  background-color: black;
+  color: white;
+  border: solid 1.8px rgb(148, 0, 0);
   font-size: 18px;
 }
 .search {
@@ -72,19 +99,20 @@ input {
   width: 75vw;
   display: flex;
   justify-content: center;
-  border: yellow solid;
+  /* border: yellow solid; */
 }
 button {
   width: 100px;
   height: 32px;
   border: rgb(148, 0, 0) solid 3px;
+  font-family: "Roboto Condensed", sans-serif;
 }
 .button {
   width: 75vw;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
-  border: orange solid;
+  /* border: orange solid; */
 }
 /*--------------------------------------
 --------------CARDS-----------------*/
@@ -96,7 +124,7 @@ button {
   justify-content: center;
   align-items: center;
   background-color: grey;
-  height: 275px;
+  height: 300px;
   width: 200px;
   border-radius: 20px;
   margin-right: 24px;
@@ -213,4 +241,44 @@ button {
 .favorites {
   margin-top: 100px;
   margin-left: 100px;
+}
+.fav {
+  margin-left: 75px;
+  border-radius: 10px;
+  background-color: black;
+  color: white;
+}
+/*----------------------------------------------
+--------------------FAVORITES--------------------*/
+.container2 {
+  display: flex;
+
+  border: solid orange;
+}
+
+.favorite-character {
+  display: flex;
+}
+.favorite-character span {
+  color: white;
+}
+.favorite-comic span {
+  color: white;
+}
+h3 {
+  text-align: center;
+  color: white;
+  font-size: 30px;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+/*-----------
+---FOOTER-----*/
+
+.footer {
+  margin-top: 71px;
+  color: white;
+  text-align: center;
+  font-size: 16px;
 }

@@ -10,13 +10,13 @@ const Header = () => {
         </Link>
       </header>
       <menu>
-        <Link to="/">
+        <Link className="link" to="/characters">
           <h2>Personnages</h2>
         </Link>
-        <Link to="/comics">
+        <Link className="link" to="/comics">
           <h2>Comics</h2>
         </Link>
-        <Link to="favourites">
+        <Link className="link" to="/favourites">
           <h2>Favoris</h2>
         </Link>
       </menu>

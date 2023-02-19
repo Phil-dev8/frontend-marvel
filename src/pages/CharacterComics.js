@@ -19,7 +19,7 @@ const CharacterComics = () => {
         );
 
         setData(response.data);
-        console.log(response.data);
+        //console.log(response.data);
         setLoading(false);
       } catch (error) {
         console.log(error.response);
@@ -48,7 +48,6 @@ const CharacterComics = () => {
         <div className="character-infos">
           <p className="character-name">{data.name}</p>
           <p className="character-description">{data.description}</p>
-          <button className="favorites">Ajouter aux favoris</button>
         </div>
       </div>
       <p className="sentence">
