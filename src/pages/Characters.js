@@ -63,7 +63,7 @@ const Characters = () => {
       </div>
 
       <div className="container">
-        {data.results.map((elem, index) => {
+        {data.results.map((elem) => {
           // CE IF PERMET DE N'AFFICHER QUE LES PERSONNAGES QUI ONT UNE IMAGE
           // if (
           //   elem.thumbnail.path ===

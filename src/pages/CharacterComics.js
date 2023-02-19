@@ -29,9 +29,7 @@ const CharacterComics = () => {
   }, [characterId]);
 
   return loading ? (
-    <div style={{ color: "white" }}>
-      JE SUIS SUR CETTE PUTAIN DE PAGE DE MERDE
-    </div>
+    <div style={{ color: "white" }}>Chargement</div>
   ) : (
     <>
       <div className="character">

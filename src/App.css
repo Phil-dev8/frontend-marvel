@@ -198,9 +198,9 @@ button {
 .character {
   display: flex;
   margin: 0 auto;
-  width: 75vw;
+  width: 50vw;
   justify-content: center;
-  border: solid green;
+  /* border: solid green; */
 }
 .character-pic {
   border: rgb(148, 0, 0) solid 3px;
@@ -252,8 +252,7 @@ button {
 --------------------FAVORITES--------------------*/
 .container2 {
   display: flex;
-
-  border: solid orange;
+  /* border: solid orange; */
 }
 
 .favorite-character {

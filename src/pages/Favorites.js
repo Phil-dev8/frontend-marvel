@@ -1,5 +1,6 @@
 // CETTE PAGE NE S'AFFICHE QUE SI VOUS AVEZ AJOUTEZ AU MOINS UN COMIC ET AU MOINS UN PERSONNAGE EN FAVORIS SINON ERREUR DU A SPLIT SUR UNDEFINED...
-//J'AI ESSAYE DE METTRE UN IF MAIS DU COUP j'avais erreur "characterTab is not defined" ligne 57
+//J'AI ESSAYE DE METTRE UN IF MAIS DU COUP j'avais erreur "characterTab is not defined" ligne 58
+// TOUT CELA EXPLIQUE LA QUASI ABSENCE DE CSS SUR CETTE PAGE....
 
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
@@ -48,7 +49,7 @@ const Favorites = () => {
   }, []);
 
   return loading ? (
-    <div>CHARGEMENT</div>
+    <div style={{ color: "white" }}>CHARGEMENT</div>
   ) : (
     <>
       <h3>Personnages favoris</h3>
