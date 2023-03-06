@@ -24,7 +24,7 @@ const Comics = () => {
       }
     };
     fetchData();
-  }, [search, skip, data]);
+  }, [search, skip]);
 
   return loading ? (
     <p style={{ color: "white" }}>Chargement</p>
@@ -75,7 +75,7 @@ const Comics = () => {
                   newTab.push(elem._id);
                   setFavoriteComic(newTab);
                   // console.log(newTab);
-                  Cookies.set("favorite-comic", [newTab], {
+                  Cookies.set("favorite-comic", newTab, {
                     expires: 3,
                   });
                   alert("Comic ajouté aux favoris");

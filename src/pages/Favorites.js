@@ -8,6 +8,7 @@ import axios from "axios";
 
 const Favorites = () => {
   const favoritesCharacters = Cookies.get("favorite-character");
+  console.log(favoritesCharacters);
   const favoritesComics = Cookies.get("favorite-comic");
 
   //EST CENSÉ RÉSOUDRE MON PROBLEME VARIABLE ENFERMÉ DANS LA CONDITION DU COUP LA LIGNE 57 NE PEUT ETRE LU..
@@ -17,6 +18,7 @@ const Favorites = () => {
   //   const charactersTab = [];
   // }
   const charactersTab = favoritesCharacters.split(",");
+  console.log(charactersTab);
 
   const comicsTab = favoritesComics.split(",");
 

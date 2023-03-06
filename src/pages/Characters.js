@@ -9,8 +9,14 @@ const Characters = () => {
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [skip, setSkip] = useState(0);
-  const [favoriteCharacter, setFavoriteCharacter] = useState([]);
-  // console.log(favoriteCharacter);
+  // const characterCookie = Cookies.get("favorite-character");
+  // console.log(characterCookie);
+  const [favoriteCharacter, setFavoriteCharacter] = useState(
+    Cookies.get("favorite-character")
+      ? Cookies.get("favorite-character").split(",")
+      : []
+  );
+  console.log(favoriteCharacter);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -82,13 +88,19 @@ const Characters = () => {
                 className="fav"
                 onClick={() => {
                   const newTab = [...favoriteCharacter];
-                  newTab.push(elem._id);
+                  if (newTab.indexOf(elem._id) === -1) {
+                    newTab.push(elem._id);
+                    alert("Personnage ajouté aux favoris");
+                  } else {
+                    alert("Vous avez déja ajouté ce personnage en favoris");
+                  }
+                  Cookies.set("favorite-character", newTab, {
+                    expires: 3,
+                  });
                   setFavoriteCharacter(newTab);
-                  Cookies.set("favorite-character", newTab, { expires: 3 });
-                  alert("Personnage ajouté aux favoris");
                 }}
               >
-                Favoris
+                Ajouter aux Favoris
               </button>
             </div>
           );
