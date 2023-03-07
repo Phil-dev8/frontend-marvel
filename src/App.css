@@ -93,6 +93,7 @@ input {
   color: white;
   border: solid 1.8px rgb(148, 0, 0);
   font-size: 18px;
+  text-align: center;
 }
 .search {
   margin: 0 auto;
@@ -106,13 +107,29 @@ button {
   height: 32px;
   border: rgb(148, 0, 0) solid 3px;
   font-family: "Roboto Condensed", sans-serif;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  background-color: black;
+  color: white;
+}
+.button > div :hover {
+  background-color: rgb(148, 0, 0);
+  color: black;
+  cursor: pointer;
+  border: white solid;
 }
 .button {
   width: 75vw;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
-  /* border: orange solid; */
+}
+.hide {
+  display: none;
+}
+
+.next {
+  justify-content: flex-end;
 }
 /*--------------------------------------
 --------------CARDS-----------------*/
@@ -184,14 +201,6 @@ button {
   /* overflow: hidden; */
   padding: 12px;
 }
-.hide {
-  display: none;
-}
-button {
-  width: 100px;
-  height: 32px;
-  border: rgb(148, 0, 0) solid 3px;
-}
 
 /*-------------------------------------
 ----------------CHARACTER--------------*/
@@ -222,7 +231,8 @@ button {
   margin-top: 50px;
   text-align: center;
   color: white;
-  font-size: 50px;
+  font-size: 36px;
+  text-decoration: underline rgb(148, 0, 0);
 }
 .characterincomics {
   margin: 0 auto;
@@ -248,6 +258,12 @@ button {
   background-color: black;
   color: white;
 }
+.favbutton :hover {
+  background-color: rgb(148, 0, 0);
+  color: black;
+  cursor: pointer;
+  border: white solid;
+}
 /*----------------------------------------------
 --------------------FAVORITES--------------------*/
 
@@ -265,7 +281,7 @@ h3 {
 ---FOOTER-----*/
 
 .footer {
-  margin-top: 71px;
+  margin-top: 70px;
   color: white;
   text-align: center;
   font-size: 16px;

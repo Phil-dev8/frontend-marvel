@@ -45,21 +45,27 @@ const Comics = () => {
         ></input>
       </div>
       <div className="button">
-        <button
-          className={skip === 0 ? "hide" : null}
-          onClick={() => {
-            setSkip(skip - 100);
-          }}
-        >
-          PRÉCÉDENT
-        </button>
-        <button
-          onClick={() => {
-            setSkip(skip + 100);
-          }}
-        >
-          SUIVANT
-        </button>
+        <div>
+          <button
+            className={skip === 0 ? "hide" : null}
+            onClick={() => {
+              setSkip(skip - 100);
+            }}
+          >
+            PRÉCÉDENT
+          </button>
+        </div>
+
+        <div>
+          <button
+            className="next"
+            onClick={() => {
+              setSkip(skip + 100);
+            }}
+          >
+            SUIVANT
+          </button>
+        </div>
       </div>
       <div className="container">
         {data.results.map((elem) => {

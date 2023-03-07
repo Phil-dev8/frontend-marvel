@@ -47,22 +47,27 @@ const Characters = () => {
         ></input>
       </div>
       <div className="button">
-        <button
-          className={skip === 0 ? "hide" : null}
-          onClick={() => {
-            setSkip(skip - 100);
-          }}
-        >
-          PRÉCÉDENT
-        </button>
-        <button
-          className="next"
-          onClick={() => {
-            setSkip(skip + 100);
-          }}
-        >
-          SUIVANT
-        </button>
+        <div>
+          {" "}
+          <button
+            className={skip === 0 ? "hide" : null}
+            onClick={() => {
+              setSkip(skip - 100);
+            }}
+          >
+            PRÉCÉDENT
+          </button>
+        </div>
+        <div>
+          <button
+            className="next"
+            onClick={() => {
+              setSkip(skip + 100);
+            }}
+          >
+            SUIVANT
+          </button>
+        </div>
       </div>
 
       <div className="container">
@@ -81,24 +86,26 @@ const Characters = () => {
               <Link className="link" to={`/comics/${elem._id}`} id={elem._id}>
                 <CharacterCard elem={elem} />
               </Link>
-              <button
-                className="fav"
-                onClick={() => {
-                  const newTab = [...favoriteCharacter];
-                  if (newTab.indexOf(elem._id) === -1) {
-                    newTab.push(elem._id);
-                    alert("Personnage ajouté aux favoris");
-                  } else {
-                    alert("Vous avez déja ajouté ce personnage en favoris");
-                  }
-                  Cookies.set("favorite-character", newTab, {
-                    expires: 3,
-                  });
-                  setFavoriteCharacter(newTab);
-                }}
-              >
-                Ajouter aux Favoris
-              </button>
+              <div className="favbutton">
+                <button
+                  className="fav"
+                  onClick={() => {
+                    const newTab = [...favoriteCharacter];
+                    if (newTab.indexOf(elem._id) === -1) {
+                      newTab.push(elem._id);
+                      alert("Personnage ajouté aux favoris");
+                    } else {
+                      alert("Vous avez déja ajouté ce personnage en favoris");
+                    }
+                    Cookies.set("favorite-character", newTab, {
+                      expires: 3,
+                    });
+                    setFavoriteCharacter(newTab);
+                  }}
+                >
+                  Favoris
+                </button>
+              </div>
             </div>
           );
         })}
