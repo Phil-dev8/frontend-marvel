@@ -1,23 +1,36 @@
 import Cookies from "js-cookie";
 import FavoriteCard from "../components/FavoriteCard";
+import FavoriteCard2 from "../components/FavoriteCard2";
+import { Link } from "react-router-dom";
 
 const Favorites = () => {
   const favoritesCharacters = Cookies.get("favorite-character");
-  console.log(favoritesCharacters);
-
+  const favoritesComics = Cookies.get("favorite-comic");
   const charactersTab = favoritesCharacters
     ? favoritesCharacters.split(",")
     : [];
+  const comicsTab = favoritesComics ? favoritesComics.split(",") : [];
 
-  console.log(charactersTab);
+  console.log(comicsTab);
 
   return (
     <>
       <h3>Personnages favoris</h3>
-      {charactersTab.map((elem, index) => {
-        console.log(elem);
-        return <FavoriteCard key={index} elem={elem} />;
-      })}
+      <div className="container">
+        {charactersTab.map((elem, index) => {
+          return (
+            <Link className="link" to={`/comics/${elem}`}>
+              <FavoriteCard key={index} elem={elem} />
+            </Link>
+          );
+        })}
+      </div>
+      <h3>Comics favoris</h3>
+      <div className="container">
+        {comicsTab.map((elem, index) => {
+          return <FavoriteCard2 key={index} elem={elem} />;
+        })}
+      </div>
     </>
   );
 };

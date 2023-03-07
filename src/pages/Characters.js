@@ -9,14 +9,11 @@ const Characters = () => {
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [skip, setSkip] = useState(0);
-  // const characterCookie = Cookies.get("favorite-character");
-  // console.log(characterCookie);
   const [favoriteCharacter, setFavoriteCharacter] = useState(
     Cookies.get("favorite-character")
       ? Cookies.get("favorite-character").split(",")
       : []
   );
-  console.log(favoriteCharacter);
 
   useEffect(() => {
     const fetchData = async () => {

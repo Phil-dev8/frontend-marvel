@@ -8,7 +8,11 @@ const Comics = () => {
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [skip, setSkip] = useState(0);
-  const [favoriteComic, setFavoriteComic] = useState([]);
+  const [favoriteComic, setFavoriteComic] = useState(
+    Cookies.get("favorite-comic")
+      ? Cookies.get("favorite-comic").split(",")
+      : []
+  );
 
   useEffect(() => {
     const fetchData = async () => {
@@ -44,21 +48,21 @@ const Comics = () => {
         <button
           className={skip === 0 ? "hide" : null}
           onClick={() => {
-            setSkip(skip - 80);
+            setSkip(skip - 100);
           }}
         >
           PRÉCÉDENT
         </button>
         <button
           onClick={() => {
-            setSkip(skip + 80);
+            setSkip(skip + 100);
           }}
         >
           SUIVANT
         </button>
       </div>
       <div className="container">
-        {data.results.map((elem, index) => {
+        {data.results.map((elem) => {
           // if (
           //   elem.thumbnail.path ===
           //   "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available"
@@ -66,20 +70,22 @@ const Comics = () => {
           //   return null;
           // else {
           return (
-            <div key={index}>
+            <div key={elem._id}>
               <ComicsCard elem={elem} />
               <button
                 className="fav"
                 onClick={() => {
                   const newTab = [...favoriteComic];
-                  newTab.push(elem._id);
-                  setFavoriteComic(newTab);
-                  // console.log(newTab);
+                  if (newTab.indexOf(elem._id) === -1) {
+                    newTab.push(elem._id);
+                    alert("Personnage ajouté aux favoris");
+                  } else {
+                    alert("Vous avez déja ajouté ce personnage en favoris");
+                  }
                   Cookies.set("favorite-comic", newTab, {
                     expires: 3,
                   });
-                  alert("Comic ajouté aux favoris");
-                  // console.log(cookie);
+                  setFavoriteComic(newTab);
                 }}
               >
                 Favoris

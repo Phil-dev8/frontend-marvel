@@ -80,7 +80,7 @@ body {
   justify-content: center;
   background-color: rgb(70, 70, 70);
   border: rgb(148, 0, 0) solid;
-  margin-bottom: 300px;
+  margin-bottom: 100px;
 }
 
 input {
@@ -250,26 +250,15 @@ button {
 }
 /*----------------------------------------------
 --------------------FAVORITES--------------------*/
-.container2 {
-  display: flex;
-  /* border: solid orange; */
-}
 
-.favorite-character {
-  display: flex;
-}
-.favorite-character span {
-  color: white;
-}
-.favorite-comic span {
-  color: white;
-}
 h3 {
   text-align: center;
   color: white;
   font-size: 30px;
   margin-top: 100px;
   margin-bottom: 100px;
+  text-decoration: underline;
+  text-decoration-color: rgb(148, 0, 0);
 }
 
 /*-----------

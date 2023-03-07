@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const FavoriteCard = ({ elem }) => {
+const FavoriteCard2 = ({ elem }) => {
   const [data, setData] = useState();
   const [loading, setLoading] = useState(true);
 
@@ -9,9 +9,9 @@ const FavoriteCard = ({ elem }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://site--backend-marvel--nm6dw4wybf2m.code.run/character/${elem}?`
+          `https://site--backend-marvel--nm6dw4wybf2m.code.run/comic/${elem}?`
         );
-        // console.log(response.data);
+        console.log(response.data);
         setData(response.data);
         setLoading(false);
       } catch (error) {
@@ -24,8 +24,8 @@ const FavoriteCard = ({ elem }) => {
   return loading ? (
     <p>Chargement</p>
   ) : (
-    <div className="character-card">
-      <p className="name">{data.name}</p>
+    <div className="comics-card">
+      <p className="name">{data.title}</p>
       <div className="test">
         <img
           className="picture"
@@ -42,4 +42,4 @@ const FavoriteCard = ({ elem }) => {
   );
 };
 
-export default FavoriteCard;
+export default FavoriteCard2;

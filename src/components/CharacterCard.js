@@ -3,8 +3,6 @@ const CharacterCard = ({ elem }) => {
   let picture = elem.thumbnail.path + "." + elem.thumbnail.extension;
 
   return (
-    // <Link to="/comics/characterId" state={{ id: elem._id }}>
-
     <div className="character-card">
       <p className="name">{elem.name}</p>
       <div className="test">
@@ -16,8 +14,6 @@ const CharacterCard = ({ elem }) => {
         )}
       </div>
     </div>
-
-    // </Link>
   );
 };
 
