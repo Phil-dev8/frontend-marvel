@@ -1,18 +1,12 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import ComicsCard from "../components/ComicsCard";
-import Cookies from "js-cookie";
 
 const Comics = () => {
   const [data, setData] = useState();
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [skip, setSkip] = useState(0);
-  const [favoriteComic, setFavoriteComic] = useState(
-    Cookies.get("favorite-comic")
-      ? Cookies.get("favorite-comic").split(",")
-      : []
-  );
 
   useEffect(() => {
     const fetchData = async () => {
@@ -69,36 +63,7 @@ const Comics = () => {
       </div>
       <div className="container">
         {data.results.map((elem) => {
-          // if (
-          //   elem.thumbnail.path ===
-          //   "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available"
-          // )
-          //   return null;
-          // else {
-          return (
-            <div key={elem._id}>
-              <ComicsCard elem={elem} />
-              <button
-                className="fav"
-                onClick={() => {
-                  const newTab = [...favoriteComic];
-                  if (newTab.indexOf(elem._id) === -1) {
-                    newTab.push(elem._id);
-                    alert("Personnage ajouté aux favoris");
-                  } else {
-                    alert("Vous avez déja ajouté ce personnage en favoris");
-                  }
-                  Cookies.set("favorite-comic", newTab, {
-                    expires: 3,
-                  });
-                  setFavoriteComic(newTab);
-                }}
-              >
-                Favoris
-              </button>
-            </div>
-          );
-          // }
+          return <ComicsCard key={elem._id} elem={elem} />;
         })}
       </div>
     </>

@@ -1,5 +1,7 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 // COMPONENTS IMPORT
 import Header from "./components/Header";
@@ -10,6 +12,7 @@ import Comics from "./pages/Comics";
 import CharacterComics from "./pages/CharacterComics";
 import Home from "./pages/Home";
 import Favorites from "./pages/Favorites";
+library.add(faStar);
 
 // const [favoritesCharacters, setFavoritesCharacters] = useState();
 // const [favoritesComics, setFavoritesComics] = useState();

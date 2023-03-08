@@ -1,7 +1,6 @@
 import Cookies from "js-cookie";
 import FavoriteCard from "../components/FavoriteCard";
 import FavoriteCard2 from "../components/FavoriteCard2";
-import { Link } from "react-router-dom";
 
 const Favorites = () => {
   const favoritesCharacters = Cookies.get("favorite-character");
@@ -18,11 +17,7 @@ const Favorites = () => {
       <h3>Personnages favoris</h3>
       <div className="container">
         {charactersTab.map((elem, index) => {
-          return (
-            <Link className="link" to={`/comics/${elem}`}>
-              <FavoriteCard key={index} elem={elem} />
-            </Link>
-          );
+          return <FavoriteCard key={index} elem={elem} />;
         })}
       </div>
       <h3>Comics favoris</h3>

@@ -32,6 +32,12 @@ menu {
   text-decoration: none;
   color: white;
 }
+.link :hover {
+  background-color: rgb(148, 0, 0);
+  color: black;
+  cursor: pointer;
+  border: white solid;
+}
 
 ::placeholder {
   color: white;
@@ -90,7 +96,7 @@ input {
   height: 32px;
   width: 400px;
   background-color: black;
-  color: white;
+  color: rgb(148, 0, 0);
   border: solid 1.8px rgb(148, 0, 0);
   font-size: 18px;
   text-align: center;
@@ -105,7 +111,7 @@ input {
 button {
   width: 100px;
   height: 32px;
-  border: rgb(148, 0, 0) solid 3px;
+  border: rgb(148, 0, 0) solid 1.8px;
   font-family: "Roboto Condensed", sans-serif;
   border-radius: 10px;
   margin-bottom: 10px;
@@ -201,6 +207,15 @@ button {
   /* overflow: hidden; */
   padding: 12px;
 }
+.icon {
+  color: rgb(255, 196, 0);
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.icon :hover {
+  cursor: pointer;
+  filter: drop-shadow(20px 10px 10px black);
+}
 
 /*-------------------------------------
 ----------------CHARACTER--------------*/
@@ -214,6 +229,7 @@ button {
 .character-pic {
   border: rgb(148, 0, 0) solid 3px;
   border-radius: 10px;
+  margin-top: 50px;
 }
 .character-infos {
   color: white;
@@ -281,7 +297,7 @@ h3 {
 ---FOOTER-----*/
 
 .footer {
-  margin-top: 70px;
+  margin-top: 40px;
   color: white;
   text-align: center;
   font-size: 16px;

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const FavoriteCard = ({ elem }) => {
   const [data, setData] = useState();
@@ -14,6 +15,7 @@ const FavoriteCard = ({ elem }) => {
         // console.log(response.data);
         setData(response.data);
         setLoading(false);
+        console.log(response.data);
       } catch (error) {
         console.log(error.response);
       }
@@ -27,11 +29,14 @@ const FavoriteCard = ({ elem }) => {
     <div className="character-card">
       <p className="name">{data.name}</p>
       <div className="test">
-        <img
-          className="picture"
-          src={data.thumbnail.path + "." + data.thumbnail.extension}
-          alt="character"
-        />
+        <Link className="link" to={`/comics/${data._id}`}>
+          <img
+            className="picture"
+            src={data.thumbnail.path + "." + data.thumbnail.extension}
+            alt="character"
+          />
+        </Link>
+
         {data.description ? (
           <span>{data.description}</span>
         ) : (
