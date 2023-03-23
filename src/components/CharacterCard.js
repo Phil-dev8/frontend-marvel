@@ -4,7 +4,6 @@ import Cookies from "js-cookie";
 import { useState } from "react";
 
 const CharacterCard = ({ elem }) => {
-  // Quand j'ajoute ".standard_medium." comme dans ComicsCard, ça casse certaines images alors je fais sans..
   let picture = elem.thumbnail.path + "." + elem.thumbnail.extension;
   const [favoriteCharacter, setFavoriteCharacter] = useState(
     Cookies.get("favorite-character")

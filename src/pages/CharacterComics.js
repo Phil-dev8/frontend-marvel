@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { AtomSpinner } from "react-epic-spinners";
 
 const CharacterComics = () => {
   const [data, setData] = useState();
@@ -29,7 +30,9 @@ const CharacterComics = () => {
   }, [characterId]);
 
   return loading ? (
-    <div style={{ color: "white" }}>Chargement</div>
+    <div className="spinner">
+      <AtomSpinner color="rgb(148, 0, 0)" size="500" />
+    </div>
   ) : (
     <>
       <div className="character">

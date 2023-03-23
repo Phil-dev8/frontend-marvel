@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import ComicsCard from "../components/ComicsCard";
+import { AtomSpinner } from "react-epic-spinners";
 
 const Comics = () => {
   const [data, setData] = useState();
@@ -25,7 +26,9 @@ const Comics = () => {
   }, [search, skip]);
 
   return loading ? (
-    <p style={{ color: "white" }}>Chargement</p>
+    <div className="spinner">
+      <AtomSpinner color="rgb(148, 0, 0)" size="500" />
+    </div>
   ) : (
     <>
       <div className="search">

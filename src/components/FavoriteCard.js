@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { AtomSpinner } from "react-epic-spinners";
 
 const FavoriteCard = ({ elem }) => {
   const [data, setData] = useState();
@@ -24,7 +25,9 @@ const FavoriteCard = ({ elem }) => {
   }, [elem]);
 
   return loading ? (
-    <p>Chargement</p>
+    <div className="spinner">
+      <AtomSpinner color="rgb(148, 0, 0)" size="50" />
+    </div>
   ) : (
     <div className="character-card">
       <p className="name">{data.name}</p>

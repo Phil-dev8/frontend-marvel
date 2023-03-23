@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Cookies from "js-cookie";
 import { useState } from "react";
+// import toast, { Toaster } from "react-hot-toast";
 
 const ComicsCard = ({ elem }) => {
   let picture =

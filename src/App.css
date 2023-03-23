@@ -7,26 +7,44 @@ header img {
   padding: 20px;
   width: 250px;
   height: 100px;
+  padding-left: 150px;
+}
+.container-header {
+  display: flex;
+  width: 75vw;
+  margin: 0 auto;
+  align-items: center;
 }
 header {
+  margin: 0 auto;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  /* border: solid green; */
-  background-color: black;
+  justify-content: center;
 }
+.header {
+  margin-right: 30px;
+  margin-top: 5px;
+}
+.header > button {
+  font-size: 16px;
+}
+.header :hover {
+  background-color: rgb(148, 0, 0);
+  color: black;
+  cursor: pointer;
+  border: white solid;
+}
+
 menu {
   width: 75vw;
   margin: 0 auto;
   display: flex;
   gap: 200px;
-  /* background-color: grey; */
   justify-content: space-around;
   align-items: center;
   height: 50px;
   border-radius: 10px;
   margin-bottom: 15px;
-  /* border: rgb(148, 0, 0) solid; */
 }
 .link {
   text-decoration: none;
@@ -45,7 +63,7 @@ menu {
   font-family: "Roboto Condensed", sans-serif;
 }
 h2 {
-  font-size: 30px;
+  font-size: 24px;
   border: solid rgb(148, 0, 0) 1.8px;
   border-radius: 7px;
   width: 250px;
@@ -164,7 +182,6 @@ button {
   font-size: 16px;
   text-align: center;
   margin-bottom: 20px;
-  z-index: 999;
   margin-bottom: 200px;
 }
 .picture {
@@ -242,6 +259,8 @@ button {
 }
 .character-description {
   margin-left: 100px;
+  font-style: italic;
+  font-size: 20px;
 }
 .sentence {
   margin-top: 50px;
@@ -264,22 +283,7 @@ button {
   border: rgb(148, 0, 0) solid 3px;
   border-radius: 10px;
 }
-.favorites {
-  margin-top: 100px;
-  margin-left: 100px;
-}
-.fav {
-  margin-left: 75px;
-  border-radius: 10px;
-  background-color: black;
-  color: white;
-}
-.favbutton :hover {
-  background-color: rgb(148, 0, 0);
-  color: black;
-  cursor: pointer;
-  border: white solid;
-}
+
 /*----------------------------------------------
 --------------------FAVORITES--------------------*/
 
@@ -301,4 +305,47 @@ h3 {
   color: white;
   text-align: center;
   font-size: 16px;
+}
+
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*----------------------- MODAL
+-------------------------*/
+.modal-root {
+  color: white;
+  /* Pour que la modal prenne tout l'écran : */
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.modal {
+  background-color: black;
+  width: 700px;
+  height: 400px;
+  padding: 10px 50px;
+  /* Placer le button en haut à droite de la modal : */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.modal button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+
+.App {
+  position: relative;
 }

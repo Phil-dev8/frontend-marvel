@@ -10,8 +10,6 @@ const Favorites = () => {
     : [];
   const comicsTab = favoritesComics ? favoritesComics.split(",") : [];
 
-  console.log(comicsTab);
-
   return (
     <>
       <h3>Personnages favoris</h3>

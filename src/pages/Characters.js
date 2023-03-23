@@ -29,8 +29,9 @@ const Characters = () => {
   }, [search, skip]);
 
   return loading ? (
-    // <p style={{ color: "white" }}>Chargement </p>
-    <AtomSpinner />
+    <div className="spinner">
+      <AtomSpinner color="rgb(148, 0, 0)" size="500" />
+    </div>
   ) : (
     <>
       <div className="search">
