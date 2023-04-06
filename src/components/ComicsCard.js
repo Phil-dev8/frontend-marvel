@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Cookies from "js-cookie";
 import { useState } from "react";
-// import toast, { Toaster } from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 
 const ComicsCard = ({ elem }) => {
   let picture =
@@ -11,6 +11,7 @@ const ComicsCard = ({ elem }) => {
       ? Cookies.get("favorite-comic").split(",")
       : []
   );
+
   return (
     <div className="comics-card">
       <FontAwesomeIcon
@@ -20,7 +21,7 @@ const ComicsCard = ({ elem }) => {
           const newTab = [...favoriteComic];
           if (newTab.indexOf(elem._id) === -1) {
             newTab.push(elem._id);
-            alert("Comic ajouté aux favoris");
+            toast.success("favoris ajouté");
           } else {
             alert("Vous avez déja ajouté ce comic en favoris");
           }
@@ -40,6 +41,7 @@ const ComicsCard = ({ elem }) => {
           <span>Pas de description disponible</span>
         )}
       </div>
+      <Toaster />
     </div>
   );
 };

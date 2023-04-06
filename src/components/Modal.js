@@ -1,4 +1,9 @@
+import { useState } from "react";
+
 const Modal = ({ setVisible }) => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
     <div
       className="modal-root"
@@ -20,8 +25,23 @@ const Modal = ({ setVisible }) => {
           X
         </button>
         <h1>Login</h1>
-        <input type="text" placeholder="email" />
-        <input type="text" placeholder="password" />
+
+        <input
+          type="text"
+          placeholder="username"
+          onChange={(event) => {
+            setUsername(event.target.value);
+          }}
+          value={username}
+        />
+        <input
+          type="password"
+          placeholder="password"
+          onChange={(event) => {
+            setPassword(event.target.value);
+          }}
+          value={password}
+        />
         <input type="submit" />
       </div>
     </div>
