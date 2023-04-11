@@ -16,7 +16,7 @@ const FavoriteCard = ({ elem }) => {
         // console.log(response.data);
         setData(response.data);
         setLoading(false);
-        console.log(response.data);
+        // console.log(response.data);
       } catch (error) {
         console.log(error.response);
       }

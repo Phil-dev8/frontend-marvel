@@ -10,7 +10,7 @@ const CharacterCard = ({ elem }) => {
       ? Cookies.get("favorite-character").split(",")
       : []
   );
-
+  console.log(favoriteCharacter);
   return (
     <div className="character-card">
       <FontAwesomeIcon

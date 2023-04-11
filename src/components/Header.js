@@ -1,7 +1,7 @@
 import logo from "../assets/img/Marvel_Logo.svg.png";
 import { Link } from "react-router-dom";
 
-const Header = ({ visible, setVisible }) => {
+const Header = ({ loginVisible, setloginVisible, permission }) => {
   return (
     <div>
       <div className="container-header">
@@ -12,13 +12,17 @@ const Header = ({ visible, setVisible }) => {
         </header>
 
         <div className="header">
-          <button
-            onClick={() => {
-              setVisible(!visible);
-            }}
-          >
-            Connexion
-          </button>
+          {!permission ? (
+            <button
+              onClick={() => {
+                setloginVisible(!loginVisible);
+              }}
+            >
+              Connexion
+            </button>
+          ) : (
+            <p style={{ color: "white" }}>{permission.username}</p>
+          )}
         </div>
       </div>
 
