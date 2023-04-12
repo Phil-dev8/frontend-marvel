@@ -7,10 +7,13 @@ const ModalLogin = ({ setloginVisible, setsignupVisible, setPermission }) => {
   const [errorMessage, setErrorMessage] = useState(null);
   const login = async (username, password) => {
     try {
-      const response = await axios.post("/user/login", {
-        username,
-        password,
-      });
+      const response = await axios.post(
+        "site--backend-marvel--nm6dw4wybf2m.code.run/user/login",
+        {
+          username,
+          password,
+        }
+      );
       setloginVisible(false);
       setPermission(response.data);
       localStorage.setItem("marvel", JSON.stringify(response.data));
