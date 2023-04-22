@@ -40,9 +40,9 @@ const Comics = () => {
               setSkip(skip - 100);
             }}
           >
-            PRÉCÉDENT
+            Précédent
           </button>
-        </div>{" "}
+        </div>
         <div className="search">
           <SearchIcon />
           <input
@@ -62,7 +62,7 @@ const Comics = () => {
               setSkip(skip + 100);
             }}
           >
-            SUIVANT
+            Suivant
           </button>
         </div>
       </div>

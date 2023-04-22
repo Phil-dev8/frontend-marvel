@@ -35,7 +35,16 @@ const ComicsCard = ({ elem }) => {
         <p className="name">{elem.title}</p>
       </div>
       <div className="card-image">
-        <img className="picture" src={picture || ""} alt="" />
+        <img
+          className="picture"
+          src={
+            elem.thumbnail.path ===
+            "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available"
+              ? "https://www.pngall.com/wp-content/uploads/4/Marvel-Avengers-PNG-Free-Image.png"
+              : elem.thumbnail.path + "." + elem.thumbnail.extension
+          }
+          alt="comic-illustration"
+        />
         {elem.description ? (
           <span>{elem.description}</span>
         ) : (

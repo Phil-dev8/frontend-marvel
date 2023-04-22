@@ -74,7 +74,7 @@ export const AuthModal = ({
         </button>
         <h1 className="modal-title">{isLogin ? "CONNEXION" : "INSCRIPTION"}</h1>
         <form className="modal-form">
-          <div className="modal-form-input-wrapper">
+          <div className="modal-form-input-wrapper2">
             <p>Identifiant : </p>
             <input
               type="text"
@@ -89,7 +89,7 @@ export const AuthModal = ({
             <p>Mot de passe :</p>
             <input
               type="password"
-              placeholder="********"
+              placeholder="••••••••"
               onChange={(event) => {
                 setPassword(event.target.value);
               }}

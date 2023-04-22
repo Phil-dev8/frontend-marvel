@@ -43,7 +43,7 @@ const Characters = () => {
               setSkip(skip - 100);
             }}
           >
-            PRÉCÉDENT
+            Précédent
           </button>
         </div>
         <div className="search">
@@ -65,7 +65,7 @@ const Characters = () => {
               setSkip(skip + 100);
             }}
           >
-            SUIVANT
+            Suivant
           </button>
         </div>
       </div>
