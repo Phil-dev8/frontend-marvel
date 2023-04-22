@@ -6,8 +6,6 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 // COMPONENTS IMPORT
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import ModalLogin from "./components/ModalLogin";
-import ModalSignup from "./components/ModalSignup";
 //PAGES IMPORT
 import Characters from "./pages/Characters";
 import Comics from "./pages/Comics";
@@ -15,25 +13,27 @@ import CharacterComics from "./pages/CharacterComics";
 import Home from "./pages/Home";
 import Favorites from "./pages/Favorites";
 import { useState } from "react";
+import { LOGIN, SIGNUP, AuthModal } from "./components/AuthModal";
 library.add(faStar);
 
 function App() {
-  const [loginVisible, setloginVisible] = useState(false);
-  const [signupVisible, setsignupVisible] = useState(false);
+  const [typeModal, setTypeModal] = useState(LOGIN);
+  const [authModalVisible, setAuthModalVisible] = useState(false);
+
   const [permission, setPermission] = useState(
     localStorage.getItem("marvel")
       ? JSON.parse(localStorage.getItem("marvel"))
       : null
   );
+  const onChangeTypeModal = (value) => setTypeModal(value);
+  const onChangePermission = (value) => setPermission(value);
+  const onCloseAuthModal = () => setAuthModalVisible(false);
+  const onOpenAuthModal = () => setAuthModalVisible(true);
 
   return (
     <div className="App">
       <Router>
-        <Header
-          loginVisible={loginVisible}
-          setloginVisible={setloginVisible}
-          permission={permission}
-        />
+        <Header permission={permission} onOpenAuthModal={onOpenAuthModal} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/characters" element={<Characters />} />
@@ -42,20 +42,14 @@ function App() {
           <Route path="/favourites" element={<Favorites />} />
         </Routes>
         <Footer />
-        {loginVisible ? (
-          <ModalLogin
-            setloginVisible={setloginVisible}
-            setsignupVisible={setsignupVisible}
-            setPermission={setPermission}
+        {authModalVisible && (
+          <AuthModal
+            onChangeTypeModal={onChangeTypeModal}
+            onChangePermission={onChangePermission}
+            onCloseModal={onCloseAuthModal}
+            typeModal={typeModal}
           />
-        ) : null}
-        {signupVisible ? (
-          <ModalSignup
-            setsignupVisible={setsignupVisible}
-            setloginVisible={setloginVisible}
-            setPermission={setPermission}
-          />
-        ) : null}
+        )}
       </Router>
     </div>
   );

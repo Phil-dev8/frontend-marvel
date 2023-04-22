@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import CharacterCard from "../components/CharacterCard";
 // import Cookies from "js-cookie";
 import { AtomSpinner } from "react-epic-spinners";
+import { ReactComponent as SearchIcon } from "../assets/img/search.svg";
 
 const Characters = () => {
   const [data, setData] = useState();
@@ -19,7 +20,7 @@ const Characters = () => {
         );
 
         setData(response.data);
-        //console.log(response.data);
+
         setLoading(false);
       } catch (error) {
         console.log(error.response);
@@ -34,16 +35,6 @@ const Characters = () => {
     </div>
   ) : (
     <>
-      <div className="search">
-        <input
-          type="text"
-          placeholder="Rechercher parmis les 1500 personnages"
-          value={search}
-          onChange={(event) => {
-            setSearch(event.target.value);
-          }}
-        ></input>
-      </div>
       <div className="button">
         <div>
           <button
@@ -54,6 +45,18 @@ const Characters = () => {
           >
             PRÉCÉDENT
           </button>
+        </div>
+        <div className="search">
+          <SearchIcon />
+          <input
+            type="text"
+            className={"search-input"}
+            placeholder="Rechercher parmis les 1500 personnages"
+            value={search}
+            onChange={(event) => {
+              setSearch(event.target.value);
+            }}
+          ></input>
         </div>
         <div>
           <button
@@ -68,7 +71,7 @@ const Characters = () => {
       </div>
 
       <div className="container">
-        {data.results.map((elem) => {
+        {data?.results?.map((elem) => {
           return (
             <div key={elem._id}>
               <CharacterCard elem={elem} />

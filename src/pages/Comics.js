@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import ComicsCard from "../components/ComicsCard";
 import { AtomSpinner } from "react-epic-spinners";
+import { ReactComponent as SearchIcon } from "../assets/img/search.svg";
 
 const Comics = () => {
   const [data, setData] = useState();
@@ -16,7 +17,7 @@ const Comics = () => {
           `https://site--backend-marvel--nm6dw4wybf2m.code.run/comics?title=${search}&skip=${skip}`
         );
         setData(response.data);
-        //console.log(data);
+
         setLoading(false);
       } catch (error) {
         console.log(error.response);
@@ -31,16 +32,6 @@ const Comics = () => {
     </div>
   ) : (
     <>
-      <div className="search">
-        <input
-          type="text"
-          placeholder="Rechercher parmis les 14000 comics"
-          value={search}
-          onChange={(event) => {
-            setSearch(event.target.value);
-          }}
-        ></input>
-      </div>
       <div className="button">
         <div>
           <button
@@ -51,8 +42,19 @@ const Comics = () => {
           >
             PRÉCÉDENT
           </button>
+        </div>{" "}
+        <div className="search">
+          <SearchIcon />
+          <input
+            type="text"
+            className={"search-input"}
+            placeholder="Rechercher parmis les 14000 comics"
+            value={search}
+            onChange={(event) => {
+              setSearch(event.target.value);
+            }}
+          ></input>
         </div>
-
         <div>
           <button
             className="next"
@@ -65,7 +67,7 @@ const Comics = () => {
         </div>
       </div>
       <div className="container">
-        {data.results.map((elem) => {
+        {data?.results?.map((elem) => {
           return <ComicsCard key={elem._id} elem={elem} />;
         })}
       </div>
