@@ -3,7 +3,10 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { AtomSpinner } from "react-epic-spinners";
 
-const FavoriteCard = ({ elem }) => {
+export const CHARACTER = "CHARACTER";
+export const COMIC = "COMIC";
+
+export const FavoriteCard = ({ elem, type }) => {
   const [data, setData] = useState();
   const [loading, setLoading] = useState(true);
 
@@ -11,12 +14,12 @@ const FavoriteCard = ({ elem }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://site--backend-marvel--nm6dw4wybf2m.code.run/character/${elem}?`
+          type === CHARACTER
+            ? `https://site--backend-marvel--nm6dw4wybf2m.code.run/character/${elem}?`
+            : `https://site--backend-marvel--nm6dw4wybf2m.code.run/comic/${elem}?`
         );
-        // console.log(response.data);
         setData(response.data);
         setLoading(false);
-        // console.log(response.data);
       } catch (error) {
         console.log(error.response);
       }
@@ -26,7 +29,7 @@ const FavoriteCard = ({ elem }) => {
 
   return loading ? (
     <div className="spinner">
-      <AtomSpinner color="rgb(148, 0, 0)" size="50" />
+      <AtomSpinner color="rgb(148, 0, 0)" size={50} />
     </div>
   ) : (
     <div className="character-card">
@@ -49,5 +52,3 @@ const FavoriteCard = ({ elem }) => {
     </div>
   );
 };
-
-export default FavoriteCard;

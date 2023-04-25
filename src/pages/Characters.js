@@ -1,13 +1,11 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-// import { Link } from "react-router-dom";
 import CharacterCard from "../components/CharacterCard";
-// import Cookies from "js-cookie";
 import { AtomSpinner } from "react-epic-spinners";
 import { ReactComponent as SearchIcon } from "../assets/img/search.svg";
 
 const Characters = () => {
-  const [data, setData] = useState();
+  const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [skip, setSkip] = useState(0);
@@ -31,7 +29,7 @@ const Characters = () => {
 
   return loading ? (
     <div className="spinner">
-      <AtomSpinner color="rgb(148, 0, 0)" size="500" />
+      <AtomSpinner color="rgb(148, 0, 0)" size={500} />
     </div>
   ) : (
     <>

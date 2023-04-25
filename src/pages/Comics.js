@@ -5,7 +5,7 @@ import { AtomSpinner } from "react-epic-spinners";
 import { ReactComponent as SearchIcon } from "../assets/img/search.svg";
 
 const Comics = () => {
-  const [data, setData] = useState();
+  const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [skip, setSkip] = useState(0);
@@ -28,7 +28,7 @@ const Comics = () => {
 
   return loading ? (
     <div className="spinner">
-      <AtomSpinner color="rgb(148, 0, 0)" size="500" />
+      <AtomSpinner color="rgb(148, 0, 0)" size={500} />
     </div>
   ) : (
     <>

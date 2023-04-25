@@ -1,52 +1,51 @@
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Cookies from "js-cookie";
-import { useState } from "react";
+import { StarSvg } from "../assets/svg/star";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const CharacterCard = ({ elem }) => {
-  const [favoriteCharacter, setFavoriteCharacter] = useState(
-    Cookies.get("favorite-character")
-      ? Cookies.get("favorite-character").split(",")
-      : []
-  );
+  const [isFavorite, setIsFavorite] = useState(false);
+  let picture = elem.thumbnail.path + "." + elem.thumbnail.extension;
+
+  useEffect(() => {
+    (async () => {
+      const favoritesData = await axios.get(
+        `https://site--backend-marvel--nm6dw4wybf2m.code.run/users/6426f4d60afb7583f103f295/favorites/characters`
+      );
+      const isFavorite = favoritesData.data.characterFavorites.includes(
+        elem._id
+      );
+      setIsFavorite(isFavorite);
+    })();
+  }, []);
+
+  const onAddFavorite = async () => {
+    console.log(elem._id);
+    try {
+      await axios.put(
+        `https://site--backend-marvel--nm6dw4wybf2m.code.run/users/6426f4d60afb7583f103f295/favorites/characters/${elem._id}`
+      );
+      setIsFavorite(true);
+    } catch (error) {
+      console.log(error.response);
+    }
+  };
 
   return (
     <div className="card">
       <div className="card-header">
-        <FontAwesomeIcon
-          icon="star"
-          className="icon"
-          onClick={() => {
-            const newTab = [...favoriteCharacter];
-            if (newTab.indexOf(elem._id) === -1) {
-              newTab.push(elem._id);
-              alert("Personnage ajouté aux favoris");
-            } else {
-              alert("Vous avez déja ajouté ce personnage en favoris");
-            }
-            Cookies.set("favorite-character", newTab, {
-              expires: 3,
-            });
-            setFavoriteCharacter(newTab);
-          }}
-        />
+        <div onClick={async () => onAddFavorite()}>
+          <StarSvg
+            backgroundColor={isFavorite ? "yellow" : "white"}
+            cursor="pointer"
+          />
+        </div>
         <p className="name">{elem.name}</p>
       </div>
-
       <div className="card-image">
         <Link to={`/comics/${elem._id}`} id={elem._id}>
-          <img
-            className="picture"
-            src={
-              elem.thumbnail.path ===
-              "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available"
-                ? "https://www.pngall.com/wp-content/uploads/4/Marvel-Avengers-PNG-Free-Image.png"
-                : elem.thumbnail.path + "." + elem.thumbnail.extension
-            }
-            alt="character"
-          />
+          <img className="picture" src={picture} alt="" />
         </Link>
-
         {elem.description ? (
           <span>{elem.description}</span>
         ) : (
