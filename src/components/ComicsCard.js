@@ -4,8 +4,8 @@ import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 
 const ComicsCard = ({ elem }) => {
-  let picture =
-    elem.thumbnail.path + "/standard_medium." + elem.thumbnail.extension;
+  // let picture =
+  //   elem.thumbnail.path + "/standard_medium." + elem.thumbnail.extension;
   const [favoriteComic, setFavoriteComic] = useState(
     Cookies.get("favorite-comic")
       ? Cookies.get("favorite-comic").split(",")

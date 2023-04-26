@@ -50,6 +50,7 @@ export const AuthModal = ({
       );
       setData(response.data.message);
       localStorage.setItem("user", JSON.stringify(response.data));
+      console.log(data);
 
       onCloseModal();
       window.location.reload();
