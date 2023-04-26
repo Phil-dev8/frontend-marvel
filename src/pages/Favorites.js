@@ -8,14 +8,18 @@ const Favorites = () => {
 
   useEffect(() => {
     (async () => {
+      const userData = localStorage.getItem("user");
+      const user = JSON.parse(userData);
+      const userId = user?._id;
+
       const charactersData = await axios.get(
-        `https://site--backend-marvel--nm6dw4wybf2m.code.run/users/6426f4d60afb7583f103f295/favorites/characters`
+        `https://site--backend-marvel--nm6dw4wybf2m.code.run/users/${userId}/favorites/characters`
       );
-      setCharactersFav(charactersData.data.characterFavorites);
+      setCharactersFav(charactersData.data);
       const comicsData = await axios.get(
-        "https://site--backend-marvel--nm6dw4wybf2m.code.run/users/6426f4d60afb7583f103f295/favorites/comics"
+        `https://site--backend-marvel--nm6dw4wybf2m.code.run/users/${userId}/favorites/comics`
       );
-      setComicsFav(comicsData.data.comicFavorites);
+      setComicsFav(comicsData.data);
     })();
   }, []);
 
@@ -23,13 +27,13 @@ const Favorites = () => {
     <>
       <h3>Personnages favoris</h3>
       <div className="container">
-        {charactersFav.map((elem, index) => {
+        {charactersFav?.map((elem, index) => {
           return <FavoriteCard key={index} elem={elem} type={CHARACTER} />;
         })}
       </div>
       <h3>Comics favoris</h3>
       <div className="container">
-        {comicsFav.map((elem, index) => {
+        {comicsFav?.map((elem, index) => {
           return <FavoriteCard key={index} elem={elem} type={COMIC} />;
         })}
       </div>

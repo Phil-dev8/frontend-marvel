@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { AtomSpinner } from "react-epic-spinners";
+import { StarSvg } from "../assets/svg/star";
 
 export const CHARACTER = "CHARACTER";
 export const COMIC = "COMIC";
@@ -32,9 +33,11 @@ export const FavoriteCard = ({ elem, type }) => {
       <AtomSpinner color="rgb(148, 0, 0)" size={50} />
     </div>
   ) : (
-    <div className="character-card">
-      <p className="name">{data.name}</p>
-      <div className="test">
+    <div className="card">
+      <div className="card-header">
+        <p className="name">{data.name}</p>
+      </div>
+      <div className="card-image">
         <Link className="link" to={`/comics/${data._id}`}>
           <img
             className="picture"

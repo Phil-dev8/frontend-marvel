@@ -26,9 +26,12 @@ export const AuthModal = ({
           password,
         }
       );
-      onCloseModal();
+
       onChangePermission(response.data);
-      localStorage.setItem("marvel", JSON.stringify(response.data));
+      localStorage.setItem("user", JSON.stringify(response.data));
+      console.log(response.data);
+      onCloseModal();
+      window.location.reload();
     } catch (error) {
       console.log(error);
       setErrorMessage(error.response.data.message);
@@ -46,7 +49,10 @@ export const AuthModal = ({
         }
       );
       setData(response.data.message);
+      localStorage.setItem("user", JSON.stringify(response.data));
+
       onCloseModal();
+      window.location.reload();
     } catch (error) {
       console.log(error);
       setErrorMessage(error.response.data.message);
@@ -54,7 +60,8 @@ export const AuthModal = ({
     }
   };
 
-  const onSubmit = async () => {
+  const onSubmit = async (event) => {
+    event.preventDefault();
     if (typeModal === LOGIN) {
       return login();
     }
@@ -101,7 +108,7 @@ export const AuthModal = ({
               className="modal-form-submit"
               value={isLogin ? "Connexion" : "Inscription"}
               type="submit"
-              onClick={async () => onSubmit()}
+              onClick={async (event) => onSubmit(event)}
             />
             {errorMessage ? <p>{errorMessage}</p> : null}
             <div className="switch-modal-wrapper">

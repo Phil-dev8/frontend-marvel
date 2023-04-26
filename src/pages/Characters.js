@@ -1,14 +1,33 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+// import { Link } from "react-router-dom";
 import CharacterCard from "../components/CharacterCard";
+// import Cookies from "js-cookie";
 import { AtomSpinner } from "react-epic-spinners";
-import { ReactComponent as SearchIcon } from "../assets/img/search.svg";
+import { ReactComponent as SearchIcon } from "../assets/svg/search.svg";
 
 const Characters = () => {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState({});
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
+  const [favoritesData, setFavoritesData] = useState(false);
+  const [userId, setUserId] = useState("");
   const [skip, setSkip] = useState(0);
+
+  useEffect(() => {
+    (async () => {
+      const userData = localStorage.getItem("user");
+      const user = JSON.parse(userData);
+
+      if (user) {
+        setUserId(user?._id);
+        const favoritesData = await axios.get(
+          `https://site--backend-marvel--nm6dw4wybf2m.code.run/users/${user?._id}/favorites/characters`
+        );
+        setFavoritesData(favoritesData.data);
+      }
+    })();
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,7 +60,7 @@ const Characters = () => {
               setSkip(skip - 100);
             }}
           >
-            Précédent
+            PRÉCÉDENT
           </button>
         </div>
         <div className="search">
@@ -63,7 +82,7 @@ const Characters = () => {
               setSkip(skip + 100);
             }}
           >
-            Suivant
+            SUIVANT
           </button>
         </div>
       </div>
@@ -72,7 +91,11 @@ const Characters = () => {
         {data?.results?.map((elem) => {
           return (
             <div key={elem._id}>
-              <CharacterCard elem={elem} />
+              <CharacterCard
+                elem={elem}
+                favoritesData={favoritesData}
+                userId={userId}
+              />
             </div>
           );
         })}

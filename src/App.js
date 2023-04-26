@@ -19,10 +19,9 @@ library.add(faStar);
 function App() {
   const [typeModal, setTypeModal] = useState(LOGIN);
   const [authModalVisible, setAuthModalVisible] = useState(false);
-
   const [permission, setPermission] = useState(
-    localStorage.getItem("marvel")
-      ? JSON.parse(localStorage.getItem("marvel"))
+    localStorage.getItem("user")
+      ? JSON.parse(localStorage.getItem("user"))
       : null
   );
   const onChangeTypeModal = (value) => setTypeModal(value);

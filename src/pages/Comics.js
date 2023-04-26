@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import ComicsCard from "../components/ComicsCard";
 import { AtomSpinner } from "react-epic-spinners";
-import { ReactComponent as SearchIcon } from "../assets/img/search.svg";
+import { ReactComponent as SearchIcon } from "../assets/svg/search.svg";
 
 const Comics = () => {
   const [data, setData] = useState(null);

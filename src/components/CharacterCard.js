@@ -3,29 +3,34 @@ import { StarSvg } from "../assets/svg/star";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const CharacterCard = ({ elem }) => {
+const CharacterCard = ({ elem, favoritesData, userId }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   let picture = elem.thumbnail.path + "." + elem.thumbnail.extension;
 
   useEffect(() => {
-    (async () => {
-      const favoritesData = await axios.get(
-        `https://site--backend-marvel--nm6dw4wybf2m.code.run/users/6426f4d60afb7583f103f295/favorites/characters`
-      );
-      const isFavorite = favoritesData.data.characterFavorites.includes(
-        elem._id
-      );
+    if (favoritesData) {
+      const isFavorite = favoritesData?.includes(elem._id);
       setIsFavorite(isFavorite);
-    })();
+    }
   }, []);
 
   const onAddFavorite = async () => {
-    console.log(elem._id);
     try {
       await axios.put(
-        `https://site--backend-marvel--nm6dw4wybf2m.code.run/users/6426f4d60afb7583f103f295/favorites/characters/${elem._id}`
+        `https://site--backend-marvel--nm6dw4wybf2m.code.run/users/${userId}/favorites/characters/${elem._id}`
       );
       setIsFavorite(true);
+    } catch (error) {
+      console.log(error.response);
+    }
+  };
+
+  const onRemoveFavorite = async () => {
+    try {
+      await axios.delete(
+        `https://site--backend-marvel--nm6dw4wybf2m.code.run/users/${userId}/favorites/characters/${elem._id}`
+      );
+      setIsFavorite(false);
     } catch (error) {
       console.log(error.response);
     }
@@ -34,7 +39,11 @@ const CharacterCard = ({ elem }) => {
   return (
     <div className="card">
       <div className="card-header">
-        <div onClick={async () => onAddFavorite()}>
+        <div
+          onClick={async () =>
+            isFavorite ? onRemoveFavorite() : onAddFavorite()
+          }
+        >
           <StarSvg
             backgroundColor={isFavorite ? "yellow" : "white"}
             cursor="pointer"
