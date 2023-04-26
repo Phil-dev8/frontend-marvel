@@ -13,7 +13,7 @@ import CharacterComics from "./pages/CharacterComics";
 import Home from "./pages/Home";
 import Favorites from "./pages/Favorites";
 import { useState } from "react";
-import { LOGIN, SIGNUP, AuthModal } from "./components/AuthModal";
+import { LOGIN, AuthModal } from "./components/AuthModal";
 library.add(faStar);
 
 function App() {

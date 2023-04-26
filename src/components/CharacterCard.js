@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { StarSvg } from "../assets/svg/star";
-import axios from "axios";  
+import axios from "axios";
 import { useEffect, useState } from "react";
 
 const CharacterCard = ({ elem, favoritesData, userId }) => {
@@ -12,7 +12,7 @@ const CharacterCard = ({ elem, favoritesData, userId }) => {
       const isFavorite = favoritesData?.includes(elem._id);
       setIsFavorite(isFavorite);
     }
-  }, []);
+  });
 
   const onAddFavorite = async () => {
     if (!userId)

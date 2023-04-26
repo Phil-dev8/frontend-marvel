@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { AtomSpinner } from "react-epic-spinners";
-import { StarSvg } from "../assets/svg/star";
+// import { StarSvg } from "../assets/svg/star";
 
 export const CHARACTER = "CHARACTER";
 export const COMIC = "COMIC";
@@ -26,7 +26,7 @@ export const FavoriteCard = ({ elem, type }) => {
       }
     };
     fetchData();
-  }, [elem]);
+  }, [elem, type]);
 
   return loading ? (
     <div className="spinner">
