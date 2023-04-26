@@ -12,7 +12,7 @@ const CharacterCard = ({ elem, favoritesData, userId }) => {
       const isFavorite = favoritesData?.includes(elem._id);
       setIsFavorite(isFavorite);
     }
-  });
+  }, [favoritesData, elem._id]);
 
   const onAddFavorite = async () => {
     if (!userId)
