@@ -1,23 +1,40 @@
 import logo from "../assets/img/Marvel_Logo.svg.png";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
-const Header = ({ onOpenAuthModal, permission }) => {
+const Header = ({ onOpenAuthModal }) => {
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    const userData = localStorage.getItem("user");
+    setUser(JSON.parse(userData));
+  }, []);
+
+  const onSignOut = () => {
+    localStorage.removeItem("user");
+    setUser({});
+    window.location.reload();
+  };
+
   return (
     <div>
       <div className="container-header">
+        {user && <p className="username-header">{user.username}</p>}
         <header>
           <Link to="/">
             <img src={logo} alt="logo de la marque" />
           </Link>
         </header>
 
-        <div className="button-sign-in">
-          {!permission ? (
-            <button onClick={onOpenAuthModal}>Connexion</button>
-          ) : (
-            <p style={{ color: "white" }}>{permission.username}</p>
-          )}
-        </div>
+        {user ? (
+          <button className="auth-button" onClick={onSignOut}>
+            Déconnexion
+          </button>
+        ) : (
+          <button className="auth-button" onClick={onOpenAuthModal}>
+            Connexion
+          </button>
+        )}
       </div>
 
       <menu>

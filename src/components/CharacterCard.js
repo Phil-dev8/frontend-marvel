@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { StarSvg } from "../assets/svg/star";
-import axios from "axios";
+import axios from "axios";  
 import { useEffect, useState } from "react";
 
 const CharacterCard = ({ elem, favoritesData, userId }) => {
@@ -15,6 +15,9 @@ const CharacterCard = ({ elem, favoritesData, userId }) => {
   }, []);
 
   const onAddFavorite = async () => {
+    if (!userId)
+      return alert("Vous devez être connecté pour ajouter un favori");
+
     try {
       await axios.put(
         `https://site--backend-marvel--nm6dw4wybf2m.code.run/users/${userId}/favorites/characters/${elem._id}`
@@ -26,6 +29,9 @@ const CharacterCard = ({ elem, favoritesData, userId }) => {
   };
 
   const onRemoveFavorite = async () => {
+    if (!userId)
+      return alert("Vous devez être connecté pour ajouter un favori");
+
     try {
       await axios.delete(
         `https://site--backend-marvel--nm6dw4wybf2m.code.run/users/${userId}/favorites/characters/${elem._id}`

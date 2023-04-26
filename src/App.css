@@ -19,19 +19,33 @@ header {
   align-items: center;
   justify-content: center;
 }
-.button-sign-in {
+.username-header {
+  position: absolute;
+  left: 0;
+  margin: 0;
+  font-size: 16px;
+  color: white;
+}
+
+.auth-button {
   position: absolute;
   right: 0;
   margin: 0;
-}
-.button-sign-in > button {
   font-size: 16px;
 }
-.button-sign-in :hover {
+
+.auth-button:hover {
   background-color: rgb(148, 0, 0);
   color: black;
   cursor: pointer;
   border: white solid;
+}
+
+.sign-out-wrapper {
+  position: absolute;
+  right: 0;
+  margin: 0;
+  font-size: 16px;
 }
 
 menu {

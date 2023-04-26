@@ -12,14 +12,16 @@ const Favorites = () => {
       const user = JSON.parse(userData);
       const userId = user?._id;
 
-      const charactersData = await axios.get(
-        `https://site--backend-marvel--nm6dw4wybf2m.code.run/users/${userId}/favorites/characters`
-      );
-      setCharactersFav(charactersData.data);
-      const comicsData = await axios.get(
-        `https://site--backend-marvel--nm6dw4wybf2m.code.run/users/${userId}/favorites/comics`
-      );
-      setComicsFav(comicsData.data);
+      if (user) {
+        const charactersData = await axios.get(
+          `https://site--backend-marvel--nm6dw4wybf2m.code.run/users/${userId}/favorites/characters`
+        );
+        setCharactersFav(charactersData.data);
+        const comicsData = await axios.get(
+          `https://site--backend-marvel--nm6dw4wybf2m.code.run/users/${userId}/favorites/comics`
+        );
+        setComicsFav(comicsData.data);
+      }
     })();
   }, []);
 

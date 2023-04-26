@@ -22,7 +22,7 @@ const Characters = () => {
       if (user) {
         setUserId(user?._id);
         const favoritesData = await axios.get(
-          `https://site--backend-marvel--nm6dw4wybf2m.code.run/users/${user?._id}/favorites/characters`
+          `https://site--backend-marvel--nm6dw4wybf2m.code.run/users/${user._id}/favorites/characters`
         );
         setFavoritesData(favoritesData.data);
       }
