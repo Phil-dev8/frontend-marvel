@@ -3,10 +3,16 @@
 /*------------------------------------
 -------------HEADER------------------*/
 
-header img {
-  width: 250px;
-  height: 100px;
+header .logo-link {
+  width: 25%;
+  height: 8%;
 }
+
+header .logo-link img {
+  width: 100%;
+  height: 100%;
+}
+
 .container-header {
   padding: 20px 0;
   position: relative;
@@ -14,11 +20,13 @@ header img {
   align-items: center;
   justify-content: center;
 }
+
 header {
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .username-header {
   position: absolute;
   left: 0;
@@ -48,14 +56,14 @@ header {
   font-size: 16px;
 }
 
-menu {
+.nav-wrapper {
   margin: 0 0 10px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 50px;
   border-radius: 10px;
 }
+
 .link {
   padding: 10px 0;
   text-decoration: none;
@@ -260,26 +268,28 @@ button {
 ----------------CHARACTER--------------*/
 .character {
   display: flex;
-  width: 50vw;
   justify-content: center;
-  /* border: solid green; */
+  margin: 50px 0 0 0;
 }
 .character-pic {
   border: rgb(148, 0, 0) solid 3px;
   border-radius: 10px;
-  margin-top: 50px;
+  max-width: 50%;
 }
 .character-infos {
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
   color: white;
 }
 .character-name {
+  text-align: center;
   font-size: 30px;
-  margin-left: 100px;
-  margin-top: 50px;
-  margin-bottom: 50px;
 }
 .character-description {
-  margin-left: 100px;
+  text-align: center;
   font-style: italic;
   font-size: 20px;
 }
@@ -353,7 +363,7 @@ h3 {
   background-color: black;
   width: 40%;
   height: 30%;
-  padding: 10px 50px;
+  padding: 10px 10%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -442,4 +452,81 @@ h3 {
 
 .App {
   position: relative;
+}
+
+@media screen and (max-width: 1100px) {
+  .nav-wrapper {
+    flex-direction: column;
+  }
+
+  .auth-button {
+    font-size: 13px;
+  }
+
+  .next {
+    font-size: 13px;
+  }
+
+  button {
+    font-size: 13px;
+    width: 80px;
+    height: 27px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .character {
+    flex-direction: column;
+    align-items: center;
+    row-gap: 20px;
+  }
+
+  .character-infos {
+    row-gap: 20px;
+  }
+
+  .modal {
+    width: 95%;
+    height: 60%;
+    border: 1px solid white;
+    font-size: 13px;
+  }
+
+  .modal-form input {
+    font-size: 11px;
+  }
+
+  .modal-form-input-label {
+    width: 40%;
+    margin: 0;
+  }
+
+  .modal-form-input-wrapper2 {
+    justify-content: space-between;
+    column-gap: 15px;
+  }
+
+  .modal-form-input-wrapper {
+    column-gap: 10px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .auth-button {
+    font-size: 11px;
+  }
+
+  .next {
+    font-size: 11px;
+  }
+
+  button {
+    font-size: 11px;
+    width: 70px;
+    height: 24px;
+  }
+
+  .nav-wrapper .link h2 {
+    font-size: 20px;
+  }
 }

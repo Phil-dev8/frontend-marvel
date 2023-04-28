@@ -94,7 +94,7 @@ export const AuthModal = ({
             />
           </div>
           <div className="modal-form-input-wrapper">
-            <p>Mot de passe :</p>
+            <p className="modal-form-input-label">Mot de passe :</p>
             <input
               type="password"
               placeholder="••••••••"

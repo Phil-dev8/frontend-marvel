@@ -21,7 +21,7 @@ const Header = ({ onOpenAuthModal }) => {
       <div className="container-header">
         {user && <p className="username-header">{user.username}</p>}
         <header>
-          <Link to="/">
+          <Link to="/" className="logo-link">
             <img src={logo} alt="logo de la marque" />
           </Link>
         </header>
@@ -37,7 +37,7 @@ const Header = ({ onOpenAuthModal }) => {
         )}
       </div>
 
-      <menu>
+      <menu className="nav-wrapper">
         <Link className="link" to="/characters">
           <h2>Personnages</h2>
         </Link>
