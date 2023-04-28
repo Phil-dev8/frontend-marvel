@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { StarSvg } from "../assets/svg/star";
 import axios from "axios";
 import { useEffect, useState } from "react";
+// import toast, { Toaster } from "react-hot-toast";
 
 const CharacterCard = ({ elem, favoritesData, userId }) => {
   const [isFavorite, setIsFavorite] = useState(false);
@@ -55,6 +56,7 @@ const CharacterCard = ({ elem, favoritesData, userId }) => {
             cursor="pointer"
           />
         </div>
+
         <p className="name">{elem.name}</p>
       </div>
       <div className="card-image">

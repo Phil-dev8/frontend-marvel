@@ -19,7 +19,16 @@ const Header = ({ onOpenAuthModal }) => {
   return (
     <div>
       <div className="container-header">
-        {user && <p className="username-header">{user.username}</p>}
+        {user && (
+          <>
+            <div className="account-header">
+              <p className="username-header">
+                Vous êtes connecté en tant que :
+              </p>
+              <p className="username-header2">{user.username}</p>
+            </div>
+          </>
+        )}
         <header>
           <Link to="/" className="logo-link">
             <img src={logo} alt="logo de la marque" />

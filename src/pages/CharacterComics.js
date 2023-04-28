@@ -6,11 +6,7 @@ import { AtomSpinner } from "react-epic-spinners";
 const CharacterComics = () => {
   const [data, setData] = useState();
   const [loading, setLoading] = useState(true);
-
   const { characterId } = useParams();
-
-  //   const picture =
-  //     data.thumbnail.path + "/portrait_uncanny." + data.thumbnail.extension;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,7 +16,6 @@ const CharacterComics = () => {
         );
 
         setData(response.data);
-        //console.log(response.data);
         setLoading(false);
       } catch (error) {
         console.log(error.response);
@@ -31,7 +26,7 @@ const CharacterComics = () => {
 
   return loading ? (
     <div className="spinner">
-      <AtomSpinner color="rgb(148, 0, 0)" size="500" />
+      <AtomSpinner color="rgb(148, 0, 0)" size={500} />
     </div>
   ) : (
     <>

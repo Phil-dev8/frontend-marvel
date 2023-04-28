@@ -38,7 +38,10 @@ function App() {
           <Route path="/characters" element={<Characters />} />
           <Route path="/comics/" element={<Comics />} />
           <Route path="/comics/:characterId" element={<CharacterComics />} />
-          <Route path="/favourites" element={<Favorites />} />
+          <Route
+            path="/favourites"
+            element={<Favorites setAuthModalVisible={setAuthModalVisible} />}
+          />
         </Routes>
         <Footer />
         {authModalVisible && (

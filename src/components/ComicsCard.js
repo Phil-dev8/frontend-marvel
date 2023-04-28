@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { StarSvg } from "../assets/svg/star";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -58,9 +58,8 @@ const ComicCard = ({ elem, favoritesData, userId }) => {
         <p className="name">{elem.title}</p>
       </div>
       <div className="card-image">
-        <Link to={`/comics/${elem._id}`} id={elem._id}>
-          <img className="picture" src={picture} alt="" />
-        </Link>
+        <img className="picture" src={picture} alt="" />
+
         {elem.description ? (
           <span>{elem.description}</span>
         ) : (

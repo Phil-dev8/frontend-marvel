@@ -2,9 +2,12 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { CHARACTER, COMIC, FavoriteCard } from "../components/FavoriteCard";
 
+// import { AuthModal } from "../components/AuthModal";
+
 const Favorites = () => {
   const [charactersFav, setCharactersFav] = useState([]);
   const [comicsFav, setComicsFav] = useState([]);
+  const [userId, setUserId] = useState(null);
 
   useEffect(() => {
     (async () => {
@@ -22,21 +25,38 @@ const Favorites = () => {
         );
         setComicsFav(comicsData.data);
       }
+      setUserId(userId);
     })();
   }, []);
 
-  return (
+  return !userId ? (
+    <div></div>
+  ) : (
     <>
       <h3>Personnages favoris</h3>
       <div className="container">
-        {charactersFav?.map((elem, index) => {
-          return <FavoriteCard key={index} elem={elem} type={CHARACTER} />;
+        {charactersFav.map((elem, index) => {
+          return (
+            <FavoriteCard
+              key={index}
+              elem={elem}
+              type={CHARACTER}
+              userId={userId}
+            />
+          );
         })}
       </div>
       <h3>Comics favoris</h3>
       <div className="container">
-        {comicsFav?.map((elem, index) => {
-          return <FavoriteCard key={index} elem={elem} type={COMIC} />;
+        {comicsFav.map((elem, index) => {
+          return (
+            <FavoriteCard
+              key={index}
+              elem={elem}
+              type={COMIC}
+              userId={userId}
+            />
+          );
         })}
       </div>
     </>

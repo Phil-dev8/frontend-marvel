@@ -80,10 +80,10 @@ export const AuthModal = ({
         <button className="close-button-modal" onClick={onCloseModal}>
           X
         </button>
-        <h1 className="modal-title">{isLogin ? "CONNEXION" : "INSCRIPTION"}</h1>
+        <h1 className="modal-title">{isLogin ? "Connexion" : "Inscription"}</h1>
         <form className="modal-form">
-          <div className="modal-form-input-wrapper2">
-            <p>Identifiant : </p>
+          <div className="modal-form-input-wrapper">
+            {/* <p>Identifiant : </p> */}
             <input
               type="text"
               placeholder="Identifiant..."
@@ -92,9 +92,6 @@ export const AuthModal = ({
               }}
               value={username}
             />
-          </div>
-          <div className="modal-form-input-wrapper">
-            <p className="modal-form-input-label">Mot de passe :</p>
             <input
               type="password"
               placeholder="••••••••"
@@ -107,7 +104,7 @@ export const AuthModal = ({
           <div className="modal-form-footer">
             <input
               className="modal-form-submit"
-              value={isLogin ? "Connexion" : "Inscription"}
+              value={isLogin ? "Se connecter" : "S'inscrire"}
               type="submit"
               onClick={async (event) => onSubmit(event)}
             />

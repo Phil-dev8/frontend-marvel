@@ -34,6 +34,12 @@ header {
   font-size: 16px;
   color: white;
 }
+.username-header2 {
+  position: absolute;
+  font-size: 30px;
+  color: rgb(148, 0, 0);
+  bottom: 10%;
+}
 
 .auth-button {
   position: absolute;
@@ -107,8 +113,7 @@ body {
 }
 .main img {
   width: 100%;
-  height: 65vh;
-  /* border: solid red; */
+  height: 65%;
   object-fit: cover;
 }
 .welcome {
@@ -321,8 +326,8 @@ h3 {
   text-align: center;
   color: white;
   font-size: 30px;
-  margin-top: 100px;
-  margin-bottom: 100px;
+  margin-top: 50px;
+  margin-bottom: 50px;
   text-decoration: underline;
   text-decoration-color: rgb(148, 0, 0);
 }
@@ -367,6 +372,8 @@ h3 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-radius: 5px;
+  border: solid 3px rgb(148, 0, 0);
 }
 .modal button {
   display: flex;
@@ -399,20 +406,21 @@ h3 {
   row-gap: 20px;
 }
 
-.modal-form-input-wrapper {
+/* .modal-form-input-wrapper {
   display: flex;
   align-items: center;
   column-gap: 10px;
-}
-.modal-form-input-wrapper2 {
+} */
+.modal-form-input-wrapper {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  column-gap: 32px;
+  gap: 20px;
 }
 
 .modal-form input {
   margin-bottom: 0;
-  width: 60%;
+  width: 100%;
   /* border-radius: unset; */
 }
 
@@ -472,6 +480,12 @@ h3 {
     width: 80px;
     height: 27px;
   }
+  .search input {
+    margin-bottom: 20px;
+    width: 30vw;
+    font-size: 13px;
+    height: 25px;
+  }
 }
 
 @media screen and (max-width: 1000px) {
@@ -486,9 +500,10 @@ h3 {
   }
 
   .modal {
-    width: 95%;
-    height: 60%;
-    border: 1px solid white;
+    width: 50%;
+    height: 35%;
+    border: 3px solid rgb(148, 0, 0);
+    border-radius: 5px;
     font-size: 13px;
   }
 
@@ -528,5 +543,21 @@ h3 {
 
   .nav-wrapper .link h2 {
     font-size: 20px;
+  }
+  .welcome {
+    font-size: 15px;
+  }
+  .search input {
+    margin-bottom: 20px;
+    width: 20vw;
+    font-size: 11px;
+    height: 20px;
+  }
+  .modal-title {
+    font-size: 16px;
+  }
+  .switch-modal-wrapper {
+    flex-direction: column;
+    gap: 10px;
   }
 }
