@@ -1,59 +1,74 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Cookies from "js-cookie";
-import { useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
+import { Link } from "react-router-dom";
+import { StarSvg } from "../assets/svg/star";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
-const ComicsCard = ({ elem }) => {
-  // let picture =
-  //   elem.thumbnail.path + "/standard_medium." + elem.thumbnail.extension;
-  const [favoriteComic, setFavoriteComic] = useState(
-    Cookies.get("favorite-comic")
-      ? Cookies.get("favorite-comic").split(",")
-      : []
-  );
+const ComicCard = ({ elem, favoritesData, userId }) => {
+  const [isFavorite, setIsFavorite] = useState(false);
+  let picture = elem.thumbnail.path + "." + elem.thumbnail.extension;
+
+  useEffect(() => {
+    if (favoritesData) {
+      const isFavorite = favoritesData?.includes(elem._id);
+      setIsFavorite(isFavorite);
+    }
+  }, [favoritesData, elem._id]);
+
+  const onAddFavorite = async () => {
+    if (!userId)
+      return alert("Vous devez être connecté pour ajouter un favori");
+
+    try {
+      await axios.put(
+        `https://site--backend-marvel--nm6dw4wybf2m.code.run/users/${userId}/favorites/comics/${elem._id}`
+      );
+      setIsFavorite(true);
+    } catch (error) {
+      console.log(error.response);
+    }
+  };
+
+  const onRemoveFavorite = async () => {
+    if (!userId)
+      return alert("Vous devez être connecté pour ajouter un favori");
+
+    try {
+      await axios.delete(
+        `https://site--backend-marvel--nm6dw4wybf2m.code.run/users/${userId}/favorites/comics/${elem._id}`
+      );
+      setIsFavorite(false);
+    } catch (error) {
+      console.log(error.response);
+    }
+  };
 
   return (
     <div className="card">
       <div className="card-header">
-        <FontAwesomeIcon
-          icon="star"
-          className="icon"
-          onClick={() => {
-            const newTab = [...favoriteComic];
-            if (newTab.indexOf(elem._id) === -1) {
-              newTab.push(elem._id);
-              toast.success("favoris ajouté");
-            } else {
-              alert("Vous avez déja ajouté ce comic en favoris");
-            }
-            Cookies.set("favorite-comic", newTab, {
-              expires: 3,
-            });
-            setFavoriteComic(newTab);
-          }}
-        />
+        <div
+          onClick={async () =>
+            isFavorite ? onRemoveFavorite() : onAddFavorite()
+          }
+        >
+          <StarSvg
+            backgroundColor={isFavorite ? "yellow" : "white"}
+            cursor="pointer"
+          />
+        </div>
         <p className="name">{elem.title}</p>
       </div>
       <div className="card-image">
-        <img
-          className="picture"
-          src={
-            elem.thumbnail.path ===
-            "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available"
-              ? "https://www.pngall.com/wp-content/uploads/4/Marvel-Avengers-PNG-Free-Image.png"
-              : elem.thumbnail.path + "." + elem.thumbnail.extension
-          }
-          alt="comic-illustration"
-        />
+        <Link to={`/comics/${elem._id}`} id={elem._id}>
+          <img className="picture" src={picture} alt="" />
+        </Link>
         {elem.description ? (
           <span>{elem.description}</span>
         ) : (
-          <span>Pas de description disponible</span>
+          <span>Pas de description disponible.</span>
         )}
       </div>
-      <Toaster />
     </div>
   );
 };
 
-export default ComicsCard;
+export default ComicCard;

@@ -9,6 +9,23 @@ const Comics = () => {
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [skip, setSkip] = useState(0);
+  const [favoritesData, setFavoritesData] = useState(false);
+  const [userId, setUserId] = useState("");
+
+  useEffect(() => {
+    (async () => {
+      const userData = localStorage.getItem("user");
+      const user = JSON.parse(userData);
+
+      if (user) {
+        setUserId(user?._id);
+        const favoritesData = await axios.get(
+          `https://site--backend-marvel--nm6dw4wybf2m.code.run/users/${user._id}/favorites/characters`
+        );
+        setFavoritesData(favoritesData.data);
+      }
+    })();
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -68,7 +85,14 @@ const Comics = () => {
       </div>
       <div className="container">
         {data?.results?.map((elem) => {
-          return <ComicsCard key={elem._id} elem={elem} />;
+          return (
+            <ComicsCard
+              key={elem._id}
+              elem={elem}
+              favoritesData={favoritesData}
+              userId={userId}
+            />
+          );
         })}
       </div>
     </>
