@@ -2,6 +2,7 @@
 import { StarSvg } from "../assets/svg/star";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 const ComicCard = ({ elem, favoritesData, userId }) => {
   const [isFavorite, setIsFavorite] = useState(false);
@@ -16,12 +17,13 @@ const ComicCard = ({ elem, favoritesData, userId }) => {
 
   const onAddFavorite = async () => {
     if (!userId)
-      return alert("Vous devez être connecté pour ajouter un favori");
+      return toast.error("Vous devez être connecté pour ajouter un favori");
 
     try {
       await axios.put(
         `https://site--backend-marvel--nm6dw4wybf2m.code.run/users/${userId}/favorites/comics/${elem._id}`
       );
+      toast.success("Comic ajouté aux favoris");
       setIsFavorite(true);
     } catch (error) {
       console.log(error.response);
@@ -30,12 +32,13 @@ const ComicCard = ({ elem, favoritesData, userId }) => {
 
   const onRemoveFavorite = async () => {
     if (!userId)
-      return alert("Vous devez être connecté pour ajouter un favori");
+      return toast.error("Vous devez être connecté pour ajouter un favori");
 
     try {
       await axios.delete(
         `https://site--backend-marvel--nm6dw4wybf2m.code.run/users/${userId}/favorites/comics/${elem._id}`
       );
+      toast.success("Comic supprimé des favoris");
       setIsFavorite(false);
     } catch (error) {
       console.log(error.response);
@@ -55,6 +58,7 @@ const ComicCard = ({ elem, favoritesData, userId }) => {
             cursor="pointer"
           />
         </div>
+        <Toaster />
         <p className="name">{elem.title}</p>
       </div>
       <div className="card-image">

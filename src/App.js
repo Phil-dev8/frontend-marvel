@@ -40,7 +40,7 @@ function App() {
           <Route path="/comics/:characterId" element={<CharacterComics />} />
           <Route
             path="/favourites"
-            element={<Favorites setAuthModalVisible={setAuthModalVisible} />}
+            element={<Favorites onOpenAuthModal={onOpenAuthModal} />}
           />
         </Routes>
         <Footer />

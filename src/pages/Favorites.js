@@ -4,10 +4,13 @@ import { CHARACTER, COMIC, FavoriteCard } from "../components/FavoriteCard";
 
 // import { AuthModal } from "../components/AuthModal";
 
-const Favorites = () => {
+const Favorites = ({ onOpenAuthModal }) => {
   const [charactersFav, setCharactersFav] = useState([]);
   const [comicsFav, setComicsFav] = useState([]);
   const [userId, setUserId] = useState(null);
+  const [reloadFavorites, setReloadFavorites] = useState(false);
+
+  const onReloadFavorites = () => setReloadFavorites((prev) => !prev);
 
   useEffect(() => {
     (async () => {
@@ -24,14 +27,15 @@ const Favorites = () => {
           `https://site--backend-marvel--nm6dw4wybf2m.code.run/users/${userId}/favorites/comics`
         );
         setComicsFav(comicsData.data);
+        setUserId(userId);
+      } else {
+        onOpenAuthModal();
       }
-      setUserId(userId);
     })();
-  }, []);
+    // eslint-disable-next-line
+  }, [reloadFavorites]);
 
-  return !userId ? (
-    <div></div>
-  ) : (
+  return (
     <>
       <h3>Personnages favoris</h3>
       <div className="container">
@@ -42,11 +46,13 @@ const Favorites = () => {
               elem={elem}
               type={CHARACTER}
               userId={userId}
+              onReloadFavorites={onReloadFavorites}
             />
           );
         })}
       </div>
       <h3>Comics favoris</h3>
+
       <div className="container">
         {comicsFav.map((elem, index) => {
           return (
@@ -55,6 +61,7 @@ const Favorites = () => {
               elem={elem}
               type={COMIC}
               userId={userId}
+              onReloadFavorites={onReloadFavorites}
             />
           );
         })}

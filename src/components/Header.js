@@ -20,14 +20,12 @@ const Header = ({ onOpenAuthModal }) => {
     <div>
       <div className="container-header">
         {user && (
-          <>
-            <div className="account-header">
-              <p className="username-header">
-                Vous êtes connecté en tant que :
-              </p>
-              <p className="username-header2">{user.username}</p>
-            </div>
-          </>
+          <div className="account-header">
+            <p className="login-text">
+              Vous êtes connecté en tant que :
+              <span className="username">{user.username}</span>
+            </p>
+          </div>
         )}
         <header>
           <Link to="/" className="logo-link">

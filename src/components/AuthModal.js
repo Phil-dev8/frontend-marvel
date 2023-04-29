@@ -1,5 +1,6 @@
 import { useState, useMemo } from "react";
 import axios from "axios";
+import toast, { Toaster } from "react-hot-toast";
 
 export const LOGIN = "login";
 export const SIGNUP = "signup";
@@ -12,8 +13,6 @@ export const AuthModal = ({
 }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState(null);
-  const [data, setData] = useState("");
 
   const isLogin = useMemo(() => typeModal === LOGIN, [typeModal]);
 
@@ -29,13 +28,12 @@ export const AuthModal = ({
 
       onChangePermission(response.data);
       localStorage.setItem("user", JSON.stringify(response.data));
-      console.log(response.data);
+
       onCloseModal();
       window.location.reload();
     } catch (error) {
       console.log(error);
-      setErrorMessage(error.response.data.message);
-      setTimeout(() => setErrorMessage(null), 3000);
+      toast.error(error.response.data.message);
     }
   };
 
@@ -48,16 +46,13 @@ export const AuthModal = ({
           password,
         }
       );
-      setData(response.data.message);
-      localStorage.setItem("user", JSON.stringify(response.data));
-      console.log(data);
 
+      localStorage.setItem("user", JSON.stringify(response.data));
       onCloseModal();
       window.location.reload();
     } catch (error) {
       console.log(error);
-      setErrorMessage(error.response.data.message);
-      setTimeout(() => setErrorMessage(null), 3000);
+      toast.error(error.response.data.message);
     }
   };
 
@@ -83,7 +78,6 @@ export const AuthModal = ({
         <h1 className="modal-title">{isLogin ? "Connexion" : "Inscription"}</h1>
         <form className="modal-form">
           <div className="modal-form-input-wrapper">
-            {/* <p>Identifiant : </p> */}
             <input
               type="text"
               placeholder="Identifiant..."
@@ -108,7 +102,8 @@ export const AuthModal = ({
               type="submit"
               onClick={async (event) => onSubmit(event)}
             />
-            {errorMessage ? <p>{errorMessage}</p> : null}
+            <Toaster />
+
             <div className="switch-modal-wrapper">
               <p>
                 {isLogin

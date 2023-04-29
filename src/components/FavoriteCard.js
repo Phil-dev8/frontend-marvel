@@ -3,12 +3,12 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { AtomSpinner } from "react-epic-spinners";
 import { StarSvg } from "../assets/svg/star";
-// import toast, { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from "react-hot-toast";
 
 export const CHARACTER = "CHARACTER";
 export const COMIC = "COMIC";
 
-export const FavoriteCard = ({ elem, type, userId }) => {
+export const FavoriteCard = ({ elem, type, userId, onReloadFavorites }) => {
   const [data, setData] = useState();
   const [loading, setLoading] = useState(true);
 
@@ -31,7 +31,7 @@ export const FavoriteCard = ({ elem, type, userId }) => {
 
   const onRemoveFavorite = async () => {
     if (!userId)
-      return alert("Vous devez être connecté pour ajouter un favori");
+      return toast.error("Vous devez être connecté pour ajouter un favori");
 
     try {
       await axios.delete(
@@ -39,8 +39,10 @@ export const FavoriteCard = ({ elem, type, userId }) => {
           ? `https://site--backend-marvel--nm6dw4wybf2m.code.run/users/${userId}/favorites/characters/${elem}`
           : `https://site--backend-marvel--nm6dw4wybf2m.code.run/users/${userId}/favorites/comics/${elem}`
       );
-      // setIsFavorite(true);
-      window.location.reload();
+      toast.success(
+        `${type === CHARACTER ? "Personnage" : "Comic"} retiré des favoris`
+      );
+      onReloadFavorites();
     } catch (error) {
       console.log(error.response);
     }
@@ -60,6 +62,7 @@ export const FavoriteCard = ({ elem, type, userId }) => {
         <div onClick={async () => onRemoveFavorite()}>
           <StarSvg backgroundColor="yellow" cursor="pointer" />
         </div>
+        <Toaster />
         <p className="name">{type === CHARACTER ? data.name : data.title}</p>
       </div>
       <div className="card-image">
