@@ -474,7 +474,7 @@ h3 {
 input[type="button"],
 input[type="submit"] {
   -webkit-appearance: none;
-  border-radius: 0;
+  border-radius: 7px;
 }
 
 @media screen and (max-width: 1100px) {
