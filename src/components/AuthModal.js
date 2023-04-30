@@ -28,8 +28,8 @@ export const AuthModal = ({
 
       onChangePermission(response.data);
       localStorage.setItem("user", JSON.stringify(response.data));
-
       onCloseModal();
+      console.log(response);
       window.location.reload();
     } catch (error) {
       console.log(error);
@@ -46,7 +46,8 @@ export const AuthModal = ({
           password,
         }
       );
-
+      onChangePermission(response.data);
+      console.log(response);
       localStorage.setItem("user", JSON.stringify(response.data));
       onCloseModal();
       window.location.reload();
@@ -60,8 +61,9 @@ export const AuthModal = ({
     event.preventDefault();
     if (typeModal === LOGIN) {
       return login();
+    } else {
+      return signup();
     }
-    await signup();
   };
 
   return (
