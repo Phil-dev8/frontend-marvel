@@ -39,7 +39,7 @@ const CharacterCard = ({ elem, favoritesData, userId }) => {
         `https://site--backend-marvel--nm6dw4wybf2m.code.run/users/${userId}/favorites/characters/${elem._id}`
       );
       setIsFavorite(false);
-      toast.success("Personnage retiré aux favoris");
+      toast.success("Personnage retiré des favoris");
     } catch (error) {
       console.log(error.response);
     }

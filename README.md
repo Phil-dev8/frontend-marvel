@@ -1,17 +1,26 @@
-# A L'ATTENTION DE MES FORMATEURS
+# Marvel
 
-J'ai un problème avec les favoris:
+Bienvenue sur ce projet full-stack réalisé en autonomie lors de la dernière semaine du bootcamp que j'ai effectué à "Le Reacteur" et ajusté/finalisé par la suite.
 
-Exemple:
+Le projet se découpe en 2 grandes sections libre (vous pouvez les consulter sans créer de compte) :
 
-Si j'ajoute un personnage en favoris et clique sur comics pour afficher les comics, si je retourne sur la page personnage pour en ajouter un deuxième, il va juste remplacer le premier et non s'ajouter..
+- Personnages:
+  Cette section affiche tout les personnages de l'univers Marvel, à raison de 100 par page.
+  Vous pouvez également rechercher vos personnages préférés via la barre de recherche.
+  En passant votre souris sur l'un d'eux, la description de celui-ci s'affichera.
+  Si vous cliquez sur l'image du personnage, vous serez dirigé vers une page regroupant tout les comics ou ce personnage apparait.
 
-Si j'ajoute plusieurs personnage sur la MEME page, la c'est bon, ceux la vont bien sajouter aux cookies.. si je clique sui
+- Comics:
+  Cette section affiche tout les comics de l'univers Marvel, à raison de 100 par page.
+  Vous pouvez également rechercher vos comics préférés via la barre de recherche.
+  En passant votre souris sur l'un d'eux, la description de celui-ci s'affichera.
 
-Si j'ajoute un favoris que j'ai trouvé grace a la searchbar, celui va etre ajouté dans le cookie mais ne s'affichera pas dans la page favoris...
+- Favoris:
+  Pour pouvoir ajouter des favoris, vous devrez créer un compte via le bouton "connexion" en haut a droite.
+  Une modal s'ouvrira vous demandant votre identifiant et votre mot de passe. Si vous n'avez pas encore de compte il vous suffira de cliquer sur "créez en un !" en bas de la modal et de simplement renseigner un pseudo et un mot de passe pour vous inscrire. Ensuite vous n'aurez qu'a cliqué sur l'étoile blanche au dessus du personnage/comic pour l'ajouter dans vos favoris. Un second clic sur un personnage/comic déja en favoris permettra de le retirer de ceux-la.
 
-Si je n'ai ajouté qu'un "type" de favoris (soit 1 perso soit 1 comics) la page favoris plante, il faut OBLIGATOIREMENT 1 favoris de chaque sinon ==> "TypeError: Cannot read properties of undefined (reading 'split') ==> J'ai compris que je ne peux pas split "null" ou "undefined" évidemment, alors j'ai voulu créer une condition qui me faisait penser que je règlerai le problème facilement (voir Favorites.js) mais non et faute de temps je n'ai pas pu creuser plus...
+Le projet est responsive mobile.
 
-De plus, le bouton suivant de la page comics ne fonctionne pas, pourtant c'est la même chose que le bouton de la page character...
+J'éspère que vous apprécirez mon travail 😊
 
-Finalement hormis mes nets progrès en CSS par rapport a Vinted (même si j'ai encore beaucoup de chemin...), je suis très déçu de ne pas pouvoir vous rendre une copie + fonctionnelle...
+Phil-dev8
