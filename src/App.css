@@ -474,6 +474,7 @@ h3 {
 input[type="button"],
 input[type="submit"] {
   -webkit-appearance: none;
+  appearance: none;
   border-radius: 7px;
 }
 
@@ -591,5 +592,9 @@ input[type="submit"] {
   .switch-modal-wrapper {
     flex-direction: column;
     gap: 10px;
+  }
+  .container {
+    flex-wrap: nowrap;
+    overflow-x: scroll;
   }
 }
