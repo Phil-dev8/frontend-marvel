@@ -38,7 +38,7 @@ const Favorites = ({ onOpenAuthModal }) => {
   return (
     <>
       <h3>Personnages favoris</h3>
-      <div className="container">
+      <div className={charactersFav.length === 1 ? "container1" : "container"}>
         {charactersFav.map((elem, index) => {
           return (
             <FavoriteCard
@@ -51,9 +51,9 @@ const Favorites = ({ onOpenAuthModal }) => {
           );
         })}
       </div>
-      <h3>Comics favoris</h3>
 
-      <div className="container">
+      <h3>Comics favoris</h3>
+      <div className={comicsFav.length === 1 ? "container1" : "container"}>
         {comicsFav.map((elem, index) => {
           return (
             <FavoriteCard
