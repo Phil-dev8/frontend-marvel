@@ -37,35 +37,56 @@ const Favorites = ({ onOpenAuthModal }) => {
 
   return (
     <>
-      <h3>Personnages favoris</h3>
-      <div className={charactersFav.length === 1 ? "container1" : "container"}>
-        {charactersFav.map((elem, index) => {
-          return (
-            <FavoriteCard
-              key={index}
-              elem={elem}
-              type={CHARACTER}
-              userId={userId}
-              onReloadFavorites={onReloadFavorites}
-            />
-          );
-        })}
-      </div>
-
-      <h3>Comics favoris</h3>
-      <div className={comicsFav.length === 1 ? "container1" : "container"}>
-        {comicsFav.map((elem, index) => {
-          return (
-            <FavoriteCard
-              key={index}
-              elem={elem}
-              type={COMIC}
-              userId={userId}
-              onReloadFavorites={onReloadFavorites}
-            />
-          );
-        })}
-      </div>
+      {charactersFav.length === 0 ? (
+        <div className="no-favorites">
+          <p style={{ color: "white" }}>
+            Vous n'avez pas ajouté de personnage en favoris !
+          </p>
+        </div>
+      ) : (
+        <>
+          <h3>Personnages favoris</h3>
+          <div
+            className={charactersFav.length === 1 ? "container1" : "container"}
+          >
+            {charactersFav.map((elem, index) => {
+              return (
+                <FavoriteCard
+                  key={index}
+                  elem={elem}
+                  type={CHARACTER}
+                  userId={userId}
+                  onReloadFavorites={onReloadFavorites}
+                />
+              );
+            })}
+          </div>
+        </>
+      )}
+      {comicsFav.length === 0 ? (
+        <div className="no-favorites">
+          <p style={{ color: "white" }}>
+            Vous n'avez pas ajouté de comic en favoris !
+          </p>
+        </div>
+      ) : (
+        <>
+          <h3>Comics favoris</h3>
+          <div className={comicsFav.length === 1 ? "container1" : "container"}>
+            {comicsFav.map((elem, index) => {
+              return (
+                <FavoriteCard
+                  key={index}
+                  elem={elem}
+                  type={COMIC}
+                  userId={userId}
+                  onReloadFavorites={onReloadFavorites}
+                />
+              );
+            })}
+          </div>
+        </>
+      )}
     </>
   );
 };

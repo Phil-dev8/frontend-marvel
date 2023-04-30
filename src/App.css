@@ -333,10 +333,14 @@ h3 {
   text-align: center;
   color: white;
   font-size: 30px;
-
   margin-bottom: 50px;
   text-decoration: underline;
   text-decoration-color: rgb(148, 0, 0);
+}
+.no-favorites {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /*-----------
@@ -616,5 +620,8 @@ input[type="submit"] {
   .characterincomics img {
     width: 150px;
     border: solid 1.8px rgb(148, 0, 0);
+  }
+  .no-favorites {
+    font-size: 12px;
   }
 }
